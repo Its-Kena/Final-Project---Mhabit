@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="8dp"
+    android:layout_margin="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/feat_genre"
+            android:layout_width="100dp"
+            android:layout_height="114dp"
+            android:paddingEnd="0dp"
+            android:src="@drawable/mhabit_comedy"></ImageView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/feat_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:text="TextView"
+                android:textSize="17dp" />
+
+            <RatingBar
+                android:id="@+id/feat_rating"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="101dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:numStars="5"
+                android:progressTint="@color/black"
+                android:rating="4.5" />
+
+            <TextView
+                android:id="@+id/feat_description"
+                android:layout_width="259dp"
+                android:layout_height="wrap_content"
+                android:maxHeight="65dp"
+                android:paddingLeft="20dp"
+                android:text="a;sdjfalkejsl akdfjklsdj sd;fkljsdf jfksld jfldskjf; ds;lkfj aklsdjf klsj fdlkj sdfkl;jdl sjf;lksd jflk jsdlfkjssd;lfkjslkjd;klsjfalksdj;dl;ksfjlakdsjksldkj;flkdjslsd;kfjds;kfjaljdfs;lskdfj;ksldafjalkdjsslkfjlskjdflsd" />
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
