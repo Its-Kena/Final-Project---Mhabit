@@ -26,7 +26,11 @@ class MovieAdapter(dataSet: List<Movie>): RecyclerView.Adapter<MovieAdapter.View
     override fun getItemCount(): Int {
         TODO("Not yet implemented")
     }
-
+    // created add function 30March23 *Denyka
+    fun add(set: Movie) {
+        data.add(set)
+        notifyItemInserted(data.size - 1)
+    }
 
 
 }
