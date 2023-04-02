@@ -1,8 +1,9 @@
 package entities
 
-class Movie(val title: String,
-    //the following are the properties for each movie
-            val rating: Int,
+data class Movie(//the following are the properties for each movie
+            val genrePic: Int,
+            val title: String,
+            val rating: Float,
             val description: String,
             val minutes: Int,
             val seconds: Int,
