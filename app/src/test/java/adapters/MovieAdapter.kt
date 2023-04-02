@@ -39,5 +39,14 @@ class MovieAdapter(private val dataSet: List<Movie>): RecyclerView.Adapter<Movie
         //the first rating is defined in ViewHolder above and  the second is defined in movie.kt
     }
 
+    // created add function 30March23 *Denyka
+    fun add(set: Movie) {
+        data.add(set)
+        notifyItemInserted(data.size - 1)
+    }
+
+
+
     override fun getItemCount() = dataSet.size
+
 }
