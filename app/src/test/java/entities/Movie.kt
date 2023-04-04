@@ -6,8 +6,9 @@ import org.junit.runner.Description
 @Entity
 class Movie(val title: String,
     //the following are the properties for each movie
-            var rating: Int,
+            var rating: Float,
             var description: String,
+            val genrePic: Int,
             val minutes: Int,
             val seconds: Int,
             val hours: Int,
