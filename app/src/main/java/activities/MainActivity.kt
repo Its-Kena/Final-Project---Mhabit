@@ -5,13 +5,10 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.*
 import androidx.room.Room
 import com.example.test.R
-import com.example.test.databinding.ActivityMainBinding
 import com.example.test.databinding.MhabitHomeBinding
 import entities.Movie
 import entities.MovieDao
