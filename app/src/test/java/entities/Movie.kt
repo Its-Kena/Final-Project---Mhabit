@@ -1,7 +1,6 @@
 package entities
 
 import androidx.room.*
-import org.junit.runner.Description
 
 @Entity
 class Movie(val title: String,
@@ -33,7 +32,7 @@ interface MovieDao{
     suspend fun getAll(): List<Movie>
 
     @Insert
-    suspend fun insert(movie: Movie)
+    suspend fun insert(movie: entities.Movie)
 
     @Update
     suspend fun update(movie: Movie)

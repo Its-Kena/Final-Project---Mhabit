@@ -9,9 +9,10 @@ import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import entities.Movie
+import com.example.test.R
 
 class MovieAdapter(private val dataSet: List<Movie>): RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
-    //private val data = dataSet.toMutableList()
+    private val data = dataSet.toMutableList()
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         //connects to the 4 different views in the movie_card.xml
         val image: ImageView = view.findViewById(R.id.feat_genre)
