@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MissingDefaultResource">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="340dp"
+        android:layout_height="290dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        app:cardCornerRadius="11dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="61dp"
+                android:layout_height="61dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/tickmark"
+                tools:ignore="ContentDescription"></ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="22dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginRight="12dp"
+                android:fontFamily="@font/opensans_semibold"
+                android:text="@string/apasswordreset"
+                android:textColor="@color/gender_txt"
+                android:textSize="15dp"
+                tools:ignore="HardcodedText,RtlHardcoded,SpUsage"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="22dp"
+                android:layout_marginRight="12dp"
+                android:fontFamily="@font/opensans_semibold"
+                android:text="@string/toyourmail"
+                android:textColor="@color/gender_txt"
+                android:textSize="15dp"
+                tools:ignore="HardcodedText,RtlHardcoded,SpUsage">
+
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="22dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginRight="12dp"
+                android:fontFamily="@font/opensans_regular"
+                android:text="@string/followthe"
+                android:textColor="@color/gender_txt"
+                android:textSize="14dp"
+                tools:ignore="HardcodedText,RtlHardcoded,SpUsage"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="22dp"
+                android:layout_marginRight="12dp"
+                android:fontFamily="@font/opensans_regular"
+                android:text="@string/inyouremail"
+                android:textColor="@color/gender_txt"
+                android:textSize="14dp"
+                tools:ignore="HardcodedText,RtlHardcoded,SpUsage"></TextView>
+
+
+            <TextView
+                android:id="@+id/txtClose"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="38dp"
+                android:background="@drawable/nextbtn"
+                android:fontFamily="@font/opensans_semibold"
+                android:gravity="center"
+                android:text="Close"
+                android:textColor="@color/white_o"
+                android:textSize="16dp"
+                tools:ignore="HardcodedText,RtlHardcoded,SpUsage"></TextView>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
