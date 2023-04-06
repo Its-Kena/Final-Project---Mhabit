@@ -21,11 +21,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 
-class MainActivity : AppCompatActivity(), ViewDialog() {
+class MainActivity : AppCompatActivity() {
     //added private variables for DAO *Denyka 29MArch23
     private lateinit var binding: MhabitHomeBinding
     private lateinit var prefs: SharedPreferences
-    private lateinit var movieDao: MovieDao
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = MhabitHomeBinding.inflate(layoutInflater)
@@ -37,8 +37,8 @@ class MainActivity : AppCompatActivity(), ViewDialog() {
         var addButton = findViewById<Button>(R.id.add_movie)
 
         addButton.setOnClickListener{
-            val alert = ViewDialog()
-            alert.showAddMovieDialog(MainActivity)
+            val alert = ViewDialog(this@MainActivity)
+            alert.showAddMovieDialog(this)
 
         }
 
@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity(), ViewDialog() {
 
     }
     // addMovie *Denyka 29March23 *need to create recycler
+    /*
     fun addMovie(view: View) {
 
         val adapter = binding.allMovies.adapter as MovieAdapter
@@ -56,6 +57,9 @@ class MainActivity : AppCompatActivity(), ViewDialog() {
         runOnIO{movieDao.insert(Movie("New Movie",0f, "New Description",
         0,0,0,0, "New Review",false, null))}//takes pff main thread puts on IO thread
     }
+
+
+     */
     //companion object *Denyka 29March23
 
     fun runOnIO(lambda: suspend () -> Unit) {

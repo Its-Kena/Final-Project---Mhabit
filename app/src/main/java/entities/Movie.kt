@@ -12,8 +12,8 @@ data class Movie(
                  @ColumnInfo(name = "minutes")val minutes: Int,
                  @ColumnInfo(name = "seconds")val seconds: Int,
                  @ColumnInfo(name = "hours")val hours: Int,
-                 @ColumnInfo(name = "review")val review: String,
-                 @ColumnInfo(name = "watch again?")val WatchAgain: Boolean,
+                 @ColumnInfo(name = "review")val review: String?,
+                 @ColumnInfo(name = "watch again?")val WatchAgain: Boolean?,
             @PrimaryKey(autoGenerate = true) val id: Int?)
 
 //this is where you should put the database commands *Denyka 29March23
@@ -23,7 +23,7 @@ fun getMovie(): List<Movie> {
     for (i in 0..9) {
         movies.add(Movie("Title $i", 0f,
             "Description $i",0, 0, 0,
-            0, "Review $i", false, 0))
+            0, "Review $i", false, null))
     }
     return movies
 }

@@ -8,7 +8,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="340dp"
-        android:layout_height="290dp"
+        android:layout_height="370dp"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
         app:cardCornerRadius="11dp"
@@ -22,77 +22,79 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="61dp"
-                android:layout_height="61dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="12dp"
-                android:src="@drawable/tickmark"
-                tools:ignore="ContentDescription"></ImageView>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="22dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginRight="12dp"
-                android:fontFamily="@font/opensans_semibold"
-                android:text="@string/apasswordreset"
-                android:textColor="@color/gender_txt"
-                android:textSize="15dp"
-                tools:ignore="HardcodedText,RtlHardcoded,SpUsage"></TextView>
-
-            <TextView
+            <EditText
+                android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="22dp"
                 android:layout_marginRight="12dp"
-                android:fontFamily="@font/opensans_semibold"
-                android:text="@string/toyourmail"
-                android:textColor="@color/gender_txt"
+                android:text="title"
                 android:textSize="15dp"
                 tools:ignore="HardcodedText,RtlHardcoded,SpUsage">
+            </EditText>
 
 
-            </TextView>
 
-            <TextView
+            <EditText
+                android:id="@+id/description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="22dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginRight="12dp"
-                android:fontFamily="@font/opensans_regular"
-                android:text="@string/followthe"
-                android:textColor="@color/gender_txt"
+                android:text="description"
                 android:textSize="14dp"
-                tools:ignore="HardcodedText,RtlHardcoded,SpUsage"></TextView>
+                tools:ignore="HardcodedText,RtlHardcoded,SpUsage"></EditText>
 
-            <TextView
+            <EditText
+                android:id="@+id/hours"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="22dp"
                 android:layout_marginRight="12dp"
-                android:fontFamily="@font/opensans_regular"
-                android:text="@string/inyouremail"
-                android:textColor="@color/gender_txt"
+                android:text="hours"
                 android:textSize="14dp"
-                tools:ignore="HardcodedText,RtlHardcoded,SpUsage"></TextView>
+                tools:ignore="HardcodedText,RtlHardcoded,SpUsage"></EditText>
+
+            <EditText
+                android:id="@+id/mins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="22dp"
+                android:layout_marginRight="12dp"
+                android:text="mins"
+                android:textSize="14dp"
+                tools:ignore="HardcodedText,RtlHardcoded,SpUsage"></EditText>
+
+            <EditText
+                android:id="@+id/seconds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="22dp"
+                android:layout_marginRight="12dp"
+                android:text="seconds"
+                android:textSize="14dp"
+                tools:ignore="HardcodedText,RtlHardcoded,SpUsage"></EditText>
+
+            <Spinner
+                android:id="@+id/genre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown"/>
+
+            <Button
+                android:id="@+id/doneAdding"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Done">
 
 
-            <TextView
-                android:id="@+id/txtClose"
-                android:layout_width="150dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="38dp"
-                android:background="@drawable/nextbtn"
-                android:fontFamily="@font/opensans_semibold"
-                android:gravity="center"
-                android:text="Close"
-                android:textColor="@color/white_o"
-                android:textSize="16dp"
-                tools:ignore="HardcodedText,RtlHardcoded,SpUsage"></TextView>
+            </Button>
+
+
+
 
         </LinearLayout>
 
