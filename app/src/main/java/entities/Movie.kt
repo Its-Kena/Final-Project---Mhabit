@@ -20,9 +20,9 @@ class Movie(val title: String,
 fun getMovie(): List<Movie> {
     val movies = mutableListOf<Movie>()
     for (i in 0..9) {
-        movies.add(Movie("Title $i", 0,
+        movies.add(Movie("Title $i", 0f,
             "Description $i",0, 0, 0,
-            "Review $i", "Rewatch $i"))
+            0, "Rewatch $i", false))
     }
     return movies
 }

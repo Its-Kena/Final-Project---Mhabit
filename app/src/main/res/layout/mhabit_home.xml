@@ -57,7 +57,7 @@
         android:id="@+id/add_movie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="588dp"
+        android:layout_marginBottom="605dp"
         android:backgroundTint="@color/black"
         android:text="Add Movie"
         android:textColor="@color/white"
@@ -92,21 +92,86 @@
         android:id="@+id/movies_by_genre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="60dp"
         android:text="Movies by Genre"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="413dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/all_movies_title"
+    <HorizontalScrollView
+        android:id="@+id/genreHorizontalScroll"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toTopOf="@id/all_movies"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_movie" />
+        app:layout_constraintTop_toBottomOf="@id/movies_by_genre"
+        app:layout_constraintVertical_bias="0.212">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="0px">
+
+            <Button
+                android:id="@+id/genre1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10px"
+                android:backgroundTint="@color/black"
+                android:text="Comedy" />
+
+            <Button
+                android:id="@+id/genre2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10px"
+                android:backgroundTint="@color/black"
+                android:text="Thriller" />
+
+            <Button
+                android:id="@+id/genre3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10px"
+                android:backgroundTint="@color/black"
+                android:text="Anime" />
+
+            <Button
+                android:id="@+id/genre4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10px"
+                android:backgroundTint="@color/black"
+                android:text="Horror" />
+
+            <Button
+                android:id="@+id/genre5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10px"
+                android:backgroundTint="@color/black"
+                android:text="Romance" />
+
+            <Button
+                android:id="@+id/genre6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10px"
+                android:backgroundTint="@color/black"
+                android:text="Action/Adventure" />
+
+            <Button
+                android:id="@+id/genre7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10px"
+                android:backgroundTint="@color/black"
+                android:text="Unlisted" />
+        </LinearLayout>
+
+    </HorizontalScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

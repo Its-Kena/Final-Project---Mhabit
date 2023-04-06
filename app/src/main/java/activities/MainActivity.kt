@@ -28,10 +28,10 @@ class MainActivity : AppCompatActivity() {
         binding = MhabitHomeBinding.inflate(layoutInflater)
         setContentView(R.layout.mhabit_home) //this will be changed to the layout name of our main screen once the app is complete. this defines where the user will start upon opening the app.
 
-        val db = Room.databaseBuilder(
-            applicationContext,
-            MovieDatabase::class.java, DATABASE_NAME
-        ).build()
+//        val db = Room.databaseBuilder(
+//            applicationContext,
+//            MovieDatabase::class.java, DATABASE_NAME
+//        ).build()
 
 
 
