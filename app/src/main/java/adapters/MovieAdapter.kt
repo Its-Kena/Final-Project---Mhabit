@@ -33,7 +33,7 @@ class MovieAdapter(private val dataSet: List<Movie>): RecyclerView.Adapter<Movie
         //dataSet is what holds all the movies
         val currentItem = dataSet[position]
 
-        holder.image.setImageResource(currentItem.genrePic)//genrePic resource is defined in movie.kt class for movie image
+        holder.image.setImageResource(currentItem.genre!!)//genrePic resource is defined in movie.kt class for movie image
         holder.title.text = currentItem.title
         holder.description.text = currentItem.description
         holder.rating.rating = currentItem.rating

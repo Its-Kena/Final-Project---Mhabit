@@ -1,12 +1,13 @@
 package entities
 
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface MovieDao {
 
     @Query("select * from Movies")
-    fun getAll(): List<Movie>
+    fun getAll(): Flow<List<Movie>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(movie: Movie)
