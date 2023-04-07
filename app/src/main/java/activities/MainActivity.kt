@@ -1,12 +1,14 @@
 package activities
 
 import adapters.MovieAdapter
-import android.content.Intent
+import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.*
 import androidx.room.Room
@@ -15,91 +17,71 @@ import com.example.test.databinding.MhabitHomeBinding
 import entities.Movie
 import entities.MovieDao
 import entities.MovieDatabase
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import entities.ViewDialog
+import kotlinx.coroutines.*
 
 
 class MainActivity : AppCompatActivity() {
     //added private variables for DAO *Denyka 29MArch23
     private lateinit var binding: MhabitHomeBinding
     private lateinit var prefs: SharedPreferences
-    private lateinit var movieDao: MovieDao
+    private lateinit var adapter: MovieAdapter
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = MhabitHomeBinding.inflate(layoutInflater)
-        setContentView(R.layout.mhabit_home)
-
-//        val db = Room.databaseBuilder(
-//            applicationContext,
-//            MovieDatabase::class.java, DATABASE_NAME
-//        ).build()
-
-        // sets up working genre buttons to be clicked on to go to second activity
-//        val b1 = findViewById<Button>(R.id.genre1)
-//        b1.setOnClickListener {
-//            val Intent = Intent(this, GenreActivity::class.java)
-//            startActivity(Intent)
-//        }
-//        val b2 = findViewById<Button>(R.id.genre2)
-//        b2.setOnClickListener {
-//            val Intent = Intent(this, GenreActivity::class.java)
-//            startActivity(Intent)
-//        }
-//        val b3 = findViewById<Button>(R.id.genre3)
-//        b3.setOnClickListener {
-//            val Intent = Intent(this, GenreActivity::class.java)
-//            startActivity(Intent)
-//        }
-//        val b4 = findViewById<Button>(R.id.genre4)
-//        b4.setOnClickListener {
-//            val Intent = Intent(this, GenreActivity::class.java)
-//            startActivity(Intent)
-//        }
-//        val b5 = findViewById<Button>(R.id.genre5)
-//        b5.setOnClickListener {
-//            val Intent = Intent(this, GenreActivity::class.java)
-//            startActivity(Intent)
-//        }
-//        val b6 = findViewById<Button>(R.id.genre6)
-//        b6.setOnClickListener {
-//            val Intent = Intent(this, GenreActivity::class.java)
-//            startActivity(Intent)
-//        }
-//        val b7 = findViewById<Button>(R.id.genre7)
-//        b7.setOnClickListener {
-//            val Intent = Intent(this, GenreActivity::class.java)
-//            startActivity(Intent)
-//        }
+        setContentView(R.layout.mhabit_home) //this will be changed to the layout name of our main screen once the app is complete. this defines where the user will start upon opening the app.
 
 
 
-        // var recycler = findViewById<RecyclerView>(R.id.all_movies)
+        /*adapter =
 
 
+        val allMoviesRecycler = findViewById<RecyclerView>(R.id.all_movies)
+        allMoviesRecycler.adapter = adapter
+        allMoviesRecycler.layoutManager = LinearLayoutManager(this);
+
+
+
+
+
+         */
+
+        var allGenresRecycler = findViewById<RecyclerView>(R.id.genre_recycler)
+
+        var addButton = findViewById<Button>(R.id.add_movie)
+
+        addButton.setOnClickListener{
+            val alert = ViewDialog(this@MainActivity)
+            alert.showAddMovieDialog(this)
+
+        }
     }
+
+}
     // addMovie *Denyka 29March23 *need to create recycler
+    /*
     fun addMovie(view: View) {
 
         val adapter = binding.allMovies.adapter as MovieAdapter
         adapter.add(Movie("New Movie", 0f, "New Description",
-            0,0,0,0,"New Review", false))
+            0,0,0,0,"New Review", false, null))
         binding.allMovies.smoothScrollToPosition(adapter.itemCount)
         runOnIO{movieDao.insert(Movie("New Movie",0f, "New Description",
-        0,0,0,0, "New Review",false))}//takes pff main thread puts on IO thread
+        0,0,0,0, "New Review",false, null))}//takes pff main thread puts on IO thread
     }
+
+
+     */
     //companion object *Denyka 29March23
-    companion object {
-        const val DATABASE_NAME = "app_database"
-        const val PREFS_NAME = "app_prefs"
-        const val IS_DOWNLOADED_KEY = "isDownloaded"
-    }
+
     fun runOnIO(lambda: suspend () -> Unit) {
         runBlocking {
             launch(Dispatchers.IO) { lambda() }
         }
     }
-}
+
 
 
 
