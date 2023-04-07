@@ -2,13 +2,16 @@ package adapters
 
 
 import activities.MainActivity
+import activities.MovieDetailActivity
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import entities.Movie
 import com.example.test.R
@@ -48,6 +51,13 @@ class MovieAdapter(context: Context, private val dataSet: List<Movie>): Recycler
         holder.description.text = currentItem.description
         holder.rating.rating = currentItem.rating
         //the first rating is defined in ViewHolder above and  the second is defined in movie.kt
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(mContext as MainActivity, MovieDetailActivity::class.java)
+            startActivity(mContext as MainActivity,intent, null)
+
+
+        }
     }
 
     // created add function 30March23 *Denyka

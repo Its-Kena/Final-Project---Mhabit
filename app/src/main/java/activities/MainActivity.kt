@@ -50,10 +50,9 @@ class MainActivity : AppCompatActivity() {
                     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                         when(direction) {
                             ItemTouchHelper.LEFT -> {
-                               adapter.deleteMovie(viewHolder.absoluteAdapterPosition)
+                                adapter.deleteMovie(viewHolder.absoluteAdapterPosition)
                             }
                         }
-
                     }
                 }
 

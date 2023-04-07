@@ -17,6 +17,9 @@
             android:name="activities.ComedyActivity"
             android:exported="false" />
         <activity
+            android:name="activities.MovieDetailActivity"
+            android:exported="false" />
+        <activity
             android:name="activities.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
