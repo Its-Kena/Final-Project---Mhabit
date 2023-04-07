@@ -26,6 +26,19 @@
             app:layout_constraintTop_toTopOf="parent" />
     </RelativeLayout>
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="102dp"
+        android:layout_height="109dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/mhabit_comedy" />
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="259dp"
@@ -57,18 +70,6 @@
             android:text="Looking for a laugh? Here are the movies you listed under the comedy genre. Make sure to leave a review! " />
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="102dp"
-        android:layout_height="109dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="37dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
-        app:srcCompat="@drawable/mhabit_comedy" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="384dp"
@@ -76,9 +77,22 @@
         android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="115dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/back_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
