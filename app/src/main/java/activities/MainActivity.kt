@@ -1,9 +1,11 @@
 package activities
 
 import adapters.MovieAdapter
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.*
@@ -26,17 +28,53 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = MhabitHomeBinding.inflate(layoutInflater)
-        setContentView(R.layout.mhabit_home) //this will be changed to the layout name of our main screen once the app is complete. this defines where the user will start upon opening the app.
+        setContentView(R.layout.mhabit_home)
 
 //        val db = Room.databaseBuilder(
 //            applicationContext,
 //            MovieDatabase::class.java, DATABASE_NAME
 //        ).build()
 
+        // sets up working genre buttons to be clicked on to go to second activity
+//        val b1 = findViewById<Button>(R.id.genre1)
+//        b1.setOnClickListener {
+//            val Intent = Intent(this, GenreActivity::class.java)
+//            startActivity(Intent)
+//        }
+//        val b2 = findViewById<Button>(R.id.genre2)
+//        b2.setOnClickListener {
+//            val Intent = Intent(this, GenreActivity::class.java)
+//            startActivity(Intent)
+//        }
+//        val b3 = findViewById<Button>(R.id.genre3)
+//        b3.setOnClickListener {
+//            val Intent = Intent(this, GenreActivity::class.java)
+//            startActivity(Intent)
+//        }
+//        val b4 = findViewById<Button>(R.id.genre4)
+//        b4.setOnClickListener {
+//            val Intent = Intent(this, GenreActivity::class.java)
+//            startActivity(Intent)
+//        }
+//        val b5 = findViewById<Button>(R.id.genre5)
+//        b5.setOnClickListener {
+//            val Intent = Intent(this, GenreActivity::class.java)
+//            startActivity(Intent)
+//        }
+//        val b6 = findViewById<Button>(R.id.genre6)
+//        b6.setOnClickListener {
+//            val Intent = Intent(this, GenreActivity::class.java)
+//            startActivity(Intent)
+//        }
+//        val b7 = findViewById<Button>(R.id.genre7)
+//        b7.setOnClickListener {
+//            val Intent = Intent(this, GenreActivity::class.java)
+//            startActivity(Intent)
+//        }
 
 
 
-        var recycler = findViewById<RecyclerView>(R.id.all_movies)
+        // var recycler = findViewById<RecyclerView>(R.id.all_movies)
 
 
     }

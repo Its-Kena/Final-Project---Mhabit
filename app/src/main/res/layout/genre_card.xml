@@ -8,6 +8,7 @@
     >
 
     <LinearLayout
+        android:id="@+id/genre_pic_layout"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginTop="20dp"
@@ -18,19 +19,16 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="center"
-            android:src="@drawable/mhabit_comedy"
-            />
+            android:src="@drawable/mhabit_comedy" />
 
         <TextView
             android:id="@+id/genre_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="Genre Name"
             android:textColor="@color/black"
-            android:gravity="center"
-            android:textSize="20sp"
-            />
-
-
+            android:textSize="20sp" />
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>

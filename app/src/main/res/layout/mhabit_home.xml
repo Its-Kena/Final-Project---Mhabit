@@ -171,7 +171,6 @@
                 android:backgroundTint="@color/black"
                 android:text="Unlisted" />
         </LinearLayout>
-
     </HorizontalScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
