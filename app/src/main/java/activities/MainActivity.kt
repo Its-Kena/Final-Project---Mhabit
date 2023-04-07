@@ -6,7 +6,9 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,10 +16,7 @@ import androidx.room.*
 import androidx.room.Room
 import com.example.test.R
 import com.example.test.databinding.MhabitHomeBinding
-import entities.Movie
-import entities.MovieDao
-import entities.MovieDatabase
-import entities.ViewDialog
+import entities.*
 import kotlinx.coroutines.*
 
 
@@ -27,7 +26,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var prefs: SharedPreferences
     private lateinit var adapter: MovieAdapter
 
-
+    private val movieViewModel: MovieViewModel by viewModels {
+        MovieViewModel.MovieViewModelFactory((application as MyApplication).repository)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = MhabitHomeBinding.inflate(layoutInflater)
@@ -35,18 +36,19 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        /*adapter =
+        movieViewModel.allMovies.observe(this, Observer { movies ->
+            movies?.let {
+
+                val allMoviesRecycler = findViewById<RecyclerView>(R.id.all_movies)
+                val adapter = MovieAdapter(movies)
+                allMoviesRecycler.adapter = adapter
+                allMoviesRecycler.layoutManager = LinearLayoutManager(this)
+
+            }
+
+        })
 
 
-        val allMoviesRecycler = findViewById<RecyclerView>(R.id.all_movies)
-        allMoviesRecycler.adapter = adapter
-        allMoviesRecycler.layoutManager = LinearLayoutManager(this);
-
-
-
-
-
-         */
 
         var allGenresRecycler = findViewById<RecyclerView>(R.id.genre_recycler)
 
@@ -58,6 +60,7 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+
 
 }
     // addMovie *Denyka 29March23 *need to create recycler

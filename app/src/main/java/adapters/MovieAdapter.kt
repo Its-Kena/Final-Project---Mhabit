@@ -13,6 +13,8 @@ import com.example.test.R
 
 class MovieAdapter(private val dataSet: List<Movie>): RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
     private val data = dataSet.toMutableList()
+
+    //= dataSet.toMutableList()
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         //connects to the 4 different views in the movie_card.xml
         val image: ImageView = view.findViewById(R.id.feat_genre)
@@ -31,9 +33,9 @@ class MovieAdapter(private val dataSet: List<Movie>): RecyclerView.Adapter<Movie
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         //dataSet is what holds all the movies
-        val currentItem = dataSet[position]
+        val currentItem = data[position]
 
-        holder.image.setImageResource(currentItem.genre!!)//genrePic resource is defined in movie.kt class for movie image
+        //holder.image.setImageResource(currentItem.genre!!)//genrePic resource is defined in movie.kt class for movie image
         holder.title.text = currentItem.title
         holder.description.text = currentItem.description
         holder.rating.rating = currentItem.rating
@@ -41,8 +43,8 @@ class MovieAdapter(private val dataSet: List<Movie>): RecyclerView.Adapter<Movie
     }
 
     // created add function 30March23 *Denyka
-    fun add(set: Movie) {
-        data.add(set)
+    fun add(movie: Movie) {
+        data.add(movie)
         notifyItemInserted(data.size - 1)
     }
 
