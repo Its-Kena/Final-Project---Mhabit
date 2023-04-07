@@ -67,15 +67,7 @@
                 android:textSize="14dp"
                 tools:ignore="HardcodedText,RtlHardcoded,SpUsage"></EditText>
 
-            <EditText
-                android:id="@+id/seconds"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="22dp"
-                android:layout_marginRight="12dp"
-                android:text="seconds"
-                android:textSize="14dp"
-                tools:ignore="HardcodedText,RtlHardcoded,SpUsage"></EditText>
+
 
             <Spinner
                 android:id="@+id/genre"

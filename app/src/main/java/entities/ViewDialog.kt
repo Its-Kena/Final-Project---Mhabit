@@ -1,6 +1,7 @@
 package entities
 
 import activities.MainActivity
+import adapters.MovieAdapter
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
@@ -9,11 +10,13 @@ import android.graphics.drawable.ColorDrawable
 import android.view.View
 import android.view.Window
 import android.widget.*
+import androidx.activity.viewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.test.R
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.currentCoroutineContext
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
+import kotlin.coroutines.coroutineContext
+
 
 class ViewDialog(context: Context) {
     private lateinit var movieDb : MovieDatabase
@@ -22,9 +25,11 @@ class ViewDialog(context: Context) {
 
     fun showAddMovieDialog(activity: Activity?) {
 
-        movieDb = MovieDatabase.getDatabase(mContext as MainActivity)
 
-        val genres = arrayOf("horror", "comedy", "animation")
+        movieDb = MovieDatabase.getDatabase(mContext as MainActivity, GlobalScope)
+
+        val genres = arrayOf("Comedy", "Thriller", "Animated", "Horror", "Romance", "Action", "Other")
+
         val genreList = genres.toMutableList()
 
         val dialog = Dialog(activity!!)
@@ -71,7 +76,8 @@ class ViewDialog(context: Context) {
 
                 // add movie to database
                 GlobalScope.launch(Dispatchers.IO) {
-                    movieDb.movieDao().insert(movie)
+
+                movieDb.movieDao().insert(movie)
                 }
 
                 dialog.dismiss() //closes the dialog box
