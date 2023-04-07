@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
             //see ViewDialog file
             val alert = ViewDialog(this@MainActivity)
             alert.showAddMovieDialog(this)
-            binding.allMovies.smoothScrollToPosition(MovieAdapter(this, movieList).itemCount)
+            binding.allMovies.smoothScrollToPosition(MovieAdapter(this, movieList).itemCount-1)
 
 
         }

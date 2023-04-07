@@ -78,7 +78,7 @@ class MovieAdapter(context: Context, private val dataSet: List<Movie>): Recycler
         startActivity(mContext as MainActivity,intent, null)
     }
 
-    override fun getItemCount() = dataSet.size
+    override fun getItemCount() = data.size
 
     /*
     // created add function 30March23 *Denyka

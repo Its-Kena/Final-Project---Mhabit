@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:ignore="MissingDefaultResource">
 
+
     <androidx.cardview.widget.CardView
         android:layout_width="340dp"
         android:layout_height="370dp"
@@ -21,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
 
 
             <EditText
@@ -84,8 +86,6 @@
 
 
             </Button>
-
-
 
 
         </LinearLayout>
