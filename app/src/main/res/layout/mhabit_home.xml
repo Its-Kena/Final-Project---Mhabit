@@ -72,21 +72,85 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="70dp"
         android:text="Movies by Genre"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/genre_recycler"
-        android:layout_width="413dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/all_movies_title"
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toTopOf="@id/all_movies"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_movie" />
+        app:layout_constraintTop_toBottomOf="@id/add_movie"
+        app:layout_constraintVertical_bias="0.25">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="20px">
+
+            <Button
+                android:backgroundTint="@color/black"
+                android:id="@+id/genre1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10px"
+                android:text="Comedy" />
+
+            <Button
+                android:backgroundTint="@color/black"
+                android:id="@+id/genre2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10px"
+                android:text="Thriller" />
+
+            <Button
+                android:backgroundTint="@color/black"
+                android:id="@+id/genre3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10px"
+                android:text="Anime" />
+
+            <Button
+                android:backgroundTint="@color/black"
+                android:id="@+id/genre4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10px"
+                android:text="Horror" />
+
+            <Button
+                android:backgroundTint="@color/black"
+                android:id="@+id/genre5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10px"
+                android:text="Romance" />
+
+            <Button
+                android:backgroundTint="@color/black"
+                android:id="@+id/genre6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10px"
+                android:text="Action/Adventure" />
+
+            <Button
+                android:backgroundTint="@color/black"
+                android:id="@+id/genre7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10px"
+                android:text="Unlisted" />
+        </LinearLayout>
+
+    </HorizontalScrollView>
 
     <TextView
         android:id="@+id/all_movies_title"

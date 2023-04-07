@@ -2,6 +2,7 @@ package activities
 
 import adapters.MovieAdapter
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
@@ -47,10 +48,9 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+        
 
-
-
-        var allGenresRecycler = findViewById<RecyclerView>(R.id.genre_recycler)
+//        var allGenresRecycler = findViewById<RecyclerView>(R.id.genre_recycler)
 
         var addButton = findViewById<Button>(R.id.add_movie)
 
@@ -59,10 +59,18 @@ class MainActivity : AppCompatActivity() {
             alert.showAddMovieDialog(this)
 
         }
+
+        //Bryce's work for Friday's demo
+        val b1 = findViewById<Button>(R.id.genre1)
+        b1.setOnClickListener {
+            val Intent = Intent(this, ComedyActivity::class.java)
+                startActivity(Intent)
+            }
     }
 
 
 }
+
     // addMovie *Denyka 29March23 *need to create recycler
     /*
     fun addMovie(view: View) {
