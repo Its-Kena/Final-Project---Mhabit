@@ -115,7 +115,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10px"
-                android:text="Anime" />
+                android:text="Animated" />
 
             <Button
                 android:backgroundTint="@color/black"
@@ -147,7 +147,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10px"
-                android:text="Unlisted" />
+                android:text="Other" />
         </LinearLayout>
 
     </HorizontalScrollView>

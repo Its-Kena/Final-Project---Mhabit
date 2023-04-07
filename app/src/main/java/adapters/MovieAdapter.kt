@@ -1,6 +1,8 @@
 package adapters
 
 
+import activities.MainActivity
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,9 +12,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import entities.Movie
 import com.example.test.R
+import entities.MovieDatabase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
-class MovieAdapter(private val dataSet: List<Movie>): RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
+class MovieAdapter(context: Context, private val dataSet: List<Movie>): RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
     private val data = dataSet.toMutableList()
+    private lateinit var movieDb : MovieDatabase
+    var mContext = context
 
     //= dataSet.toMutableList()
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -48,7 +56,13 @@ class MovieAdapter(private val dataSet: List<Movie>): RecyclerView.Adapter<Movie
         notifyItemInserted(data.size - 1)
     }
 
+    fun deleteMovie(i : Int) {
+        movieDb = MovieDatabase.getDatabase(mContext as MainActivity, GlobalScope)
+        GlobalScope.launch(Dispatchers.IO) {
 
+            movieDb.movieDao().delete(data[i])
+        }
+    }
 
     override fun getItemCount() = dataSet.size
 

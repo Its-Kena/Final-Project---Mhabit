@@ -65,5 +65,6 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
+    implementation "it.xabaras.android:recyclerview-swipedecorator:1.4"
 
 }

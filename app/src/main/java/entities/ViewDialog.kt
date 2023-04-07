@@ -28,7 +28,8 @@ class ViewDialog(context: Context) {
 
         movieDb = MovieDatabase.getDatabase(mContext as MainActivity, GlobalScope)
 
-        val genres = arrayOf("horror", "comedy", "animation")
+        val genres = arrayOf("Comedy", "Thriller", "Animated", "Horror", "Romance", "Action", "Other")
+
         val genreList = genres.toMutableList()
 
         val dialog = Dialog(activity!!)

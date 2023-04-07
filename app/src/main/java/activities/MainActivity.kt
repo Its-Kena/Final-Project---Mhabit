@@ -11,6 +11,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.*
@@ -41,14 +42,27 @@ class MainActivity : AppCompatActivity() {
             movies?.let {
 
                 val allMoviesRecycler = findViewById<RecyclerView>(R.id.all_movies)
-                val adapter = MovieAdapter(movies)
+                val adapter = MovieAdapter(this, movies)
                 allMoviesRecycler.adapter = adapter
                 allMoviesRecycler.layoutManager = LinearLayoutManager(this)
 
+                val swipegesture = object : SwipeGesture(this) {
+                    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                        when(direction) {
+                            ItemTouchHelper.LEFT -> {
+                               adapter.deleteMovie(viewHolder.absoluteAdapterPosition)
+                            }
+                        }
+
+                    }
+                }
+
+                val touchHelper = ItemTouchHelper(swipegesture)
+                touchHelper.attachToRecyclerView(allMoviesRecycler)
             }
 
         })
-        
+
 
 //        var allGenresRecycler = findViewById<RecyclerView>(R.id.genre_recycler)
 
