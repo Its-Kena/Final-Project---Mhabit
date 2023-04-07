@@ -13,7 +13,7 @@ interface MovieDao {
     suspend fun insert(movie: Movie)
 
     @Update
-    suspend fun update(movie: Movie)
+    suspend fun update(movie: Movie?)
 
     @Delete
     suspend fun delete(movie: Movie)

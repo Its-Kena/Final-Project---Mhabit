@@ -3,22 +3,81 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
 
-    <EditText
-        android:id="@+id/reviewbox"
-        android:hint="What did you think of the movie?"
-        android:gravity="top"
-        android:layout_gravity="center"
-        android:layout_width="360dp"
-        android:layout_height="180dp" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="23dp">
 
+        <EditText
+            android:id="@+id/title"
+            android:text="title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            />
 
-    <Button
-        android:id="@+id/edit"
+        <EditText
+            android:id="@+id/descriptionbox"
+            android:layout_width="360dp"
+            android:layout_height="150dp"
+            android:text="description"/>
+
+        <LinearLayout
+            android:id="@+id/time_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            >
+        <EditText
+            android:id="@+id/hours"
+            android:text="hours"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+
+            />
+
+        <EditText
+            android:id="@+id/minutes"
+            android:text="mins"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/watchagain_prompt"
+            android:text="Would you watch it again?"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Spinner
+            android:id="@+id/watchagain"
+            android:contentDescription="Watch again?"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"/>
+
+        <EditText
+            android:id="@+id/reviewbox"
+            android:layout_width="360dp"
+            android:layout_height="180dp"
+            android:layout_gravity="center"
+            android:gravity="top"
+            android:hint="What did you think of the movie?"
+            android:singleLine="true"/>
+
+        <Button
+        android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edit"
-         />
+        android:text="Save edits"/>
 
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

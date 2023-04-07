@@ -1,9 +1,10 @@
 package entities
 
 import androidx.room.*
+import java.io.Serializable
 
 @Entity(tableName = "Movies")
-data class Movie(
+data class Movie  (
     //the following are the properties for each movie
             @ColumnInfo(name = "title")var title: String,
             @ColumnInfo(name = "description")var description: String,
@@ -13,7 +14,7 @@ data class Movie(
             @ColumnInfo(name = "rating")var rating: Float,
             @ColumnInfo(name = "review")var review: String?,
             @ColumnInfo(name = "watch again?")var WatchAgain: Boolean?,
-            @PrimaryKey(autoGenerate = true) val id: Int?)
+            @PrimaryKey(autoGenerate = true) val id: Int?) : Serializable
 
 //this is where you should put the database commands *Denyka 29March23
 //*need to figure out int
