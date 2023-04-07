@@ -25,7 +25,6 @@ class MovieDetailActivity() : AppCompatActivity() {
     private lateinit var movieDb : MovieDatabase
     private var movieItem : Movie? = null
 
-    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = MovieDetailActivityBinding.inflate(layoutInflater)
@@ -36,7 +35,11 @@ class MovieDetailActivity() : AppCompatActivity() {
         bundle?.apply {
             //Serializable Data
 
-            movieItem = getSerializable("movie", Movie::class.java)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                movieItem = getSerializable("movie", Movie::class.java)
+            } else {
+                movieItem = getSerializable("movie") as Movie
+            }
             if (movieItem != null) {
 
                 //SET TITLE
