@@ -86,8 +86,8 @@ class MainActivity : AppCompatActivity() {
         val b1 = findViewById<Button>(R.id.genre1)
         b1.setOnClickListener {
             val Intent = Intent(this, ComedyActivity::class.java)
-                startActivity(Intent)
-            }
+            startActivity(Intent)
+        }
     }
 
 
