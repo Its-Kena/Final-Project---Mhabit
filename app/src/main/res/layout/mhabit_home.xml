@@ -167,10 +167,12 @@
         android:id="@+id/all_movies"
         android:layout_width="405dp"
         android:layout_height="404dp"
+        android:layout_marginTop="17dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/all_movies_title" />
 
     <TextView
         android:id="@+id/textView2"
