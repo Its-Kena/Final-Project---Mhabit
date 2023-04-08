@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="22dp"
                 android:layout_marginRight="12dp"
-                android:text="title"
+                android:hint="title"
                 android:textSize="15dp"
                 tools:ignore="HardcodedText,RtlHardcoded,SpUsage">
             </EditText>
@@ -45,9 +45,9 @@
                 android:layout_marginLeft="22dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginRight="12dp"
-                android:text="description"
+                android:hint="description"
                 android:textSize="14dp"
-                tools:ignore="HardcodedText,RtlHardcoded,SpUsage"></EditText>
+                tools:ignore="HardcodedText,RtlHardcoded,SpUsage"/>
 
             <EditText
                 android:id="@+id/hours"
@@ -55,9 +55,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="22dp"
                 android:layout_marginRight="12dp"
-                android:text="hours"
+                android:hint="hours"
+                android:inputType="number"
                 android:textSize="14dp"
-                tools:ignore="HardcodedText,RtlHardcoded,SpUsage"></EditText>
+                tools:ignore="HardcodedText,RtlHardcoded,SpUsage"/>
 
             <EditText
                 android:id="@+id/mins"
@@ -65,9 +66,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="22dp"
                 android:layout_marginRight="12dp"
-                android:text="mins"
+                android:hint="mins"
+                android:inputType="number"
                 android:textSize="14dp"
-                tools:ignore="HardcodedText,RtlHardcoded,SpUsage"></EditText>
+                tools:ignore="HardcodedText,RtlHardcoded,SpUsage"/>
 
 
 
@@ -82,10 +84,15 @@
                 android:id="@+id/doneAdding"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="Done">
+                android:text="Confirm"/>
+
+            <Button
+                android:id="@+id/cancel"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Cancel"/>
 
 
-            </Button>
 
 
         </LinearLayout>

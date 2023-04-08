@@ -119,6 +119,7 @@ class MovieDetailActivity() : AppCompatActivity() {
                     movieItem?.WatchAgain = watchagain
 
                     updateMovie()
+                    finish()
                 }
 
             }
