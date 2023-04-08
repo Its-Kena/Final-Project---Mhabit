@@ -73,6 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="60dp"
+        android:textSize="15sp"
         android:text="Movies by Genre"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
@@ -159,6 +160,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginBottom="17dp"
         android:text="All Movies"
+        android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/all_movies"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.046"
