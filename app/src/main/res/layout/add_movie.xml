@@ -35,7 +35,8 @@
                 android:layout_marginLeft="22dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginRight="12dp"
-                android:hint="title"
+                android:hint="Movie Title"
+                android:textColorHint="@color/white"
                 android:background="@drawable/custom_input"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
@@ -50,9 +51,11 @@
                 android:layout_height="75dp"
                 android:layout_marginLeft="22dp"
                 android:layout_marginRight="12dp"
-                android:hint="description"
+                android:hint="Movie Description"
+                android:textColorHint="@color/white"
+                android:background="@drawable/custom_input"
+                android:textColor="@color/white"
                 android:textSize="20dp" />
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -66,13 +69,15 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="22dp"
                     android:layout_marginRight="12dp"
+                    android:inputType="number"
                     android:background="@drawable/custom_input"
                     android:paddingStart="7dp"
                     android:paddingEnd="5dp"
-                    android:text="hours"
+                    android:hint="Hours"
                     android:textSize="15dp"
+                    android:textColorHint="@color/white"
                     android:textColor="@color/white"
-                    tools:ignore="HardcodedText,RtlHardcoded,SpUsage"/>
+                    tools:ignore="HardcodedText,RtlHardcoded,SpUsage" />
 
                 <EditText
                     android:id="@+id/mins"
@@ -81,18 +86,20 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="22dp"
                     android:layout_marginRight="12dp"
+                    android:inputType="number"
                     android:background="@drawable/custom_input"
                     android:paddingStart="7dp"
                     android:paddingEnd="5dp"
-                    android:text="mins"
-                    android:textColor="@color/white"
+                    android:hint="Mins"
+                    android:textColorHint="@color/white"
                     android:textSize="15dp"
+                    android:textColor="@color/white"
                     tools:ignore="HardcodedText,RtlHardcoded,SpUsage"/>
             </LinearLayout>
 
             <Spinner
                 android:id="@+id/genre"
-                android:layout_width="wrap_content"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:background="@android:drawable/btn_dropdown"
@@ -102,22 +109,23 @@
                 android:id="@+id/doneAdding"
                 android:layout_width="wrap_content"
                 android:text="Done"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="280dp"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/white"/>
+                android:layout_height="wrap_content"
+                android:layout_marginStart="280dp"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/white"/>
 
             <Button
                 android:id="@+id/cancel"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Cancel"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/white"
                 android:layout_marginStart="220dp"/>
-
-
 
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
