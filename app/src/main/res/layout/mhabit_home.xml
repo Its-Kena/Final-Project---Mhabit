@@ -100,8 +100,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10px"
                 android:backgroundTint="@color/black"
-                android:text="Comedy"
-                android:onClick="genreClicked"/>
+                android:text="Comedy" />
 
             <Button
                 android:id="@+id/thriller"
@@ -109,8 +108,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10px"
                 android:backgroundTint="@color/black"
-                android:text="Thriller"
-                android:onClick="genreClicked"/>
+                android:text="Thriller" />
 
             <Button
                 android:id="@+id/animated"
@@ -118,8 +116,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10px"
                 android:backgroundTint="@color/black"
-                android:text="Animated"
-                android:onClick="genreClicked"/>
+                android:text="Animated" />
 
             <Button
                 android:id="@+id/horror"
@@ -127,8 +124,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10px"
                 android:backgroundTint="@color/black"
-                android:text="Horror"
-                android:onClick="genreClicked"/>
+                android:text="Horror" />
 
             <Button
                 android:id="@+id/romance"
@@ -136,8 +132,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10px"
                 android:backgroundTint="@color/black"
-                android:text="Romance"
-                android:onClick="genreClicked"/>
+                android:text="Romance" />
 
             <Button
                 android:id="@+id/action"
@@ -145,8 +140,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10px"
                 android:backgroundTint="@color/black"
-                android:text="Action/Adventure"
-                android:onClick="genreClicked"/>
+                android:text="Action/Adventure" />
 
             <Button
                 android:id="@+id/other"
@@ -154,8 +148,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10px"
                 android:backgroundTint="@color/black"
-                android:text="Other"
-                android:onClick="genreClicked"/>
+                android:text="Other" />
         </LinearLayout>
 
     </HorizontalScrollView>

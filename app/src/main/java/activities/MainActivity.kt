@@ -2,7 +2,6 @@ package activities
 
 import adapters.MovieAdapter
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -15,14 +14,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.test.R
 import com.example.test.databinding.MhabitHomeBinding
 import entities.*
-import java.io.Serializable
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: MhabitHomeBinding
-    private lateinit var prefs: SharedPreferences
     private lateinit var movieList: List<Movie>
-    private lateinit var extraMovieList : List<Movie>
 
 
     //viewmodel used to work with the database on main thread
@@ -35,6 +31,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding = MhabitHomeBinding.inflate(layoutInflater)
         setContentView(R.layout.mhabit_home) //this will be changed to the layout name of our main screen once the app is complete. this defines where the user will start upon opening the app.
 
+        //grab buttons and attach onClickListeners for future use with a convenient when/switch case
         val comedyButton = findViewById<Button>(R.id.comedy)
         val thrillerButton = findViewById<Button>(R.id.thriller)
         val animatedButton = findViewById<Button>(R.id.animated)
@@ -55,7 +52,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         movieViewModel.allMovies.observe(this, Observer { movies ->
             movies?.let {
                 //this has already grabbed the list of movies for us so we can just use it
-                //connect allMoviesRecycler to appropriate adapter
+                //connect allMoviesRecycler to appropriate adapter and set its layout manager
                 movieList = movies
                 val allMoviesRecycler = findViewById<RecyclerView>(R.id.all_movies)
                 val adapter = MovieAdapter(this, movies)
@@ -81,8 +78,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         })
 
 
-        //var allGenresRecycler = findViewById<RecyclerView>(R.id.genre_recycler)
-
         //set up pop up for adding movie
         var addButton = findViewById<Button>(R.id.add_movie)
 
@@ -90,34 +85,23 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             //see ViewDialog file
             val alert = ViewDialog(this@MainActivity)
             alert.showAddMovieDialog(this)
+
+            //this ScrollToPosition doesn't work --> needs to be fixed
             binding.allMovies.smoothScrollToPosition(MovieAdapter(this, movieList).itemCount - 1)
 
-
         }
-
-        /*
-        //Bryce's work for Friday's demo
-        val b1 = findViewById<Button>(R.id.comedy)
-        b1.setOnClickListener {
-            val Intent = Intent(this, GenreActivity::class.java)
-            startActivity(Intent)
-        }
-
-         */
     }
 
-
-
-
-    private fun startGenreActivity(genreToChoose: String) {
+    //method that opens the genre view screen
+    private fun startGenreActivity(genreChoice: String) {
         val genreIntent = Intent(this, GenreActivity::class.java)
-        genreIntent.putExtra("genre", genreToChoose)
+        //sending the string genreChoice into the next activity so we can set attributes of screen for that specific genre
+        genreIntent.putExtra("genre", genreChoice)
         startActivity(genreIntent)
     }
 
-
-
-override fun onClick(p0: View?) {
+    //calls the method to start the genre activity when any of the genre buttons on the main screen are clicked
+    override fun onClick(p0: View?) {
         when (p0?.id) {
             R.id.comedy -> startGenreActivity("Comedy")
 
