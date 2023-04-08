@@ -53,39 +53,40 @@
 
     </RelativeLayout>
 
+
     <Button
         android:id="@+id/add_movie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="588dp"
+        android:layout_marginTop="12dp"
         android:backgroundTint="@color/black"
         android:text="Add Movie"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.945"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
     <TextView
         android:id="@+id/movies_by_genre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="60dp"
+        android:textSize="15sp"
         android:text="Movies by Genre"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
     <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        app:layout_constraintBottom_toTopOf="@id/all_movies"
+        android:layout_marginTop="11dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/add_movie"
-        app:layout_constraintVertical_bias="0.25">
+        app:layout_constraintTop_toBottomOf="@+id/movies_by_genre">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -94,59 +95,59 @@
             android:padding="20px">
 
             <Button
-                android:backgroundTint="@color/black"
                 android:id="@+id/genre1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10px"
+                android:backgroundTint="@color/black"
                 android:text="Comedy" />
 
             <Button
-                android:backgroundTint="@color/black"
                 android:id="@+id/genre2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10px"
+                android:backgroundTint="@color/black"
                 android:text="Thriller" />
 
             <Button
-                android:backgroundTint="@color/black"
                 android:id="@+id/genre3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10px"
+                android:backgroundTint="@color/black"
                 android:text="Animated" />
 
             <Button
-                android:backgroundTint="@color/black"
                 android:id="@+id/genre4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10px"
+                android:backgroundTint="@color/black"
                 android:text="Horror" />
 
             <Button
-                android:backgroundTint="@color/black"
                 android:id="@+id/genre5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10px"
+                android:backgroundTint="@color/black"
                 android:text="Romance" />
 
             <Button
-                android:backgroundTint="@color/black"
                 android:id="@+id/genre6"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10px"
+                android:backgroundTint="@color/black"
                 android:text="Action/Adventure" />
 
             <Button
-                android:backgroundTint="@color/black"
                 android:id="@+id/genre7"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10px"
+                android:backgroundTint="@color/black"
                 android:text="Other" />
         </LinearLayout>
 
@@ -156,16 +157,21 @@
         android:id="@+id/all_movies_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="17dp"
         android:text="All Movies"
+        android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/all_movies"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
+        app:layout_constraintVertical_bias="0.05" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/all_movies"
         android:layout_width="wrap_content"
-        android:layout_height="315dp"
+        android:layout_height="508dp"
         android:layout_marginTop="240dp"
         android:background="@color/white"
         android:scrollbars="vertical"
@@ -175,9 +181,24 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:layout_marginBottom="18dp"
+        android:text="HOME"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/movies_by_genre"
+        app:layout_constraintEnd_toStartOf="@+id/add_movie"
+        app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
-        app:layout_constraintVertical_bias="0.47" />
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

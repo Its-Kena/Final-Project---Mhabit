@@ -24,18 +24,16 @@
             android:orientation="vertical">
 
 
-
             <EditText
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="22dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginRight="12dp"
                 android:hint="title"
-                android:textSize="15dp"
-                tools:ignore="HardcodedText,RtlHardcoded,SpUsage">
-            </EditText>
-
+                android:textSize="20dp"
+                tools:ignore="HardcodedText,RtlHardcoded,SpUsage"/>
 
 
             <EditText
@@ -43,11 +41,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="22dp"
-                android:layout_marginTop="18dp"
                 android:layout_marginRight="12dp"
                 android:hint="description"
-                android:textSize="14dp"
-                tools:ignore="HardcodedText,RtlHardcoded,SpUsage"/>
+                android:textSize="20dp" />
+
 
             <EditText
                 android:id="@+id/hours"
@@ -57,8 +54,8 @@
                 android:layout_marginRight="12dp"
                 android:hint="hours"
                 android:inputType="number"
-                android:textSize="14dp"
-                tools:ignore="HardcodedText,RtlHardcoded,SpUsage"/>
+                android:textSize="20dp" />
+
 
             <EditText
                 android:id="@+id/mins"
@@ -68,15 +65,15 @@
                 android:layout_marginRight="12dp"
                 android:hint="mins"
                 android:inputType="number"
-                android:textSize="14dp"
+                android:textSize="20dp"
                 tools:ignore="HardcodedText,RtlHardcoded,SpUsage"/>
-
-
 
             <Spinner
                 android:id="@+id/genre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
                 android:background="@android:drawable/btn_dropdown"
                 android:spinnerMode="dropdown"/>
 
@@ -90,7 +87,8 @@
                 android:id="@+id/cancel"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="Cancel"/>
+                android:text="Cancel"
+                android:layout_marginStart="220dp"/>
 
 
 
