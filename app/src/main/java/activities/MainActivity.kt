@@ -7,6 +7,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -88,10 +89,6 @@ class MainActivity : AppCompatActivity() {
         b1.setOnClickListener {
             val Intent = Intent(this, ComedyActivity::class.java)
             startActivity(Intent)
-            // attempt to change comedy_page values from this activity
-            var featTitle = findViewById<TextView>(R.id.feat_title)
-            featTitle.text = "Action"
-
         }
 
 
