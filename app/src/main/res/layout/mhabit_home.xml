@@ -177,18 +177,17 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/all_movies"
-        android:layout_width="wrap_content"
-        android:layout_height="508dp"
-        android:layout_marginTop="240dp"
+        android:layout_width="404dp"
+        android:layout_height="412dp"
         android:background="@color/white"
-        android:scrollbars="vertical"
         android:fadeScrollbars="true"
-        android:scrollbarThumbVertical="@android:color/black"
         android:scrollbarStyle="insideInset"
+        android:scrollbarThumbVertical="@android:color/black"
+        android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/home"
