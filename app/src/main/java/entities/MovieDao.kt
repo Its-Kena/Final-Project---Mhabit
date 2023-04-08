@@ -9,6 +9,9 @@ interface MovieDao {
     @Query("select * from Movies")
     fun getAll(): Flow<MutableList<Movie>>
 
+    @Query("select * from Movies")
+    fun easyGetAll(): MutableList<Movie>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(movie: Movie)
 

@@ -9,7 +9,6 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.test.R
-import com.example.test.databinding.ComedyPageBinding
 import com.example.test.databinding.MovieDetailActivityBinding
 import entities.Movie
 import entities.MovieDatabase
@@ -119,6 +118,7 @@ class MovieDetailActivity() : AppCompatActivity() {
                     movieItem?.WatchAgain = watchagain
 
                     updateMovie()
+                    finish()
                 }
 
             }

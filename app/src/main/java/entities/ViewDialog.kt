@@ -19,7 +19,7 @@ import kotlin.coroutines.coroutineContext
 
 
 class ViewDialog(context: Context) {
-    private lateinit var movieDb : MovieDatabase
+    private lateinit var movieDb: MovieDatabase
     var mContext = context
 
 
@@ -28,7 +28,8 @@ class ViewDialog(context: Context) {
 
         movieDb = MovieDatabase.getDatabase(mContext as MainActivity, GlobalScope)
 
-        val genres = arrayOf("Comedy", "Thriller", "Animated", "Horror", "Romance", "Action", "Other")
+        val genres : Array<String> =
+            arrayOf("Comedy", "Thriller", "Animated", "Horror", "Romance", "Action", "Other")
 
         val genreList = genres.toMutableList()
 
@@ -39,7 +40,7 @@ class ViewDialog(context: Context) {
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
 
-        var genre: Int? = null
+        var genre: String? = null
 
         //creating the dropdown box
         val spinner = dialog.findViewById<Spinner>(R.id.genre)
@@ -50,8 +51,13 @@ class ViewDialog(context: Context) {
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                genre = position
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View,
+                position: Int,
+                id: Long
+            ) {
+                genre = parent.getItemAtPosition(position).toString()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -59,30 +65,59 @@ class ViewDialog(context: Context) {
             }
         }
 
-            val doneButton = dialog.findViewById<Button>(R.id.doneAdding)
+        val doneButton = dialog.findViewById<Button>(R.id.doneAdding)
 
-            //when done button is clicked
-            doneButton.setOnClickListener {
-                //set the variables to whatever the user input is
-                var title = dialog.findViewById<EditText>(R.id.title).text.toString()
-                var description = dialog.findViewById<EditText>(R.id.description).text.toString()
-                var hours = dialog.findViewById<EditText>(R.id.hours).text.toString()
-                var minutes = dialog.findViewById<EditText>(R.id.mins).text.toString()
 
+        var dialogTitle = dialog.findViewById<EditText>(R.id.title)
+        var dialogDescription = dialog.findViewById<EditText>(R.id.description)
+        var dialogHours = dialog.findViewById<EditText>(R.id.hours)
+        var dialogMinutes = dialog.findViewById<EditText>(R.id.mins)
+
+
+        //when done button is clicked
+        doneButton.setOnClickListener {
+            //set the variables to whatever the user input is
+            var title = dialog.findViewById<EditText>(R.id.title).text.toString()
+            var description = dialog.findViewById<EditText>(R.id.description).text.toString()
+            var hours = dialog.findViewById<EditText>(R.id.hours).text.toString()
+            var minutes = dialog.findViewById<EditText>(R.id.mins).text.toString()
+
+            //disables adding a new movie if any of those fields are empty but the button is no longer usable after this
+            //so this is a temporary measure
+            if (isEmpty(dialogTitle)|| isEmpty(dialogDescription)  ||
+                isEmpty((dialogHours)) || isEmpty(dialogMinutes)
+            ) {
+                doneButton.isEnabled = false
+                doneButton.isClickable = false
+            } else {
                 //create a new movie object with those variables
                 val movie = Movie(
                     title, description, genre, hours.toInt(), minutes.toInt(), 0f, null, null, null
                 )
 
+
                 // add movie to database
                 GlobalScope.launch(Dispatchers.IO) {
 
-                movieDb.movieDao().insert(movie)
+                    movieDb.movieDao().insert(movie)
                 }
 
                 dialog.dismiss() //closes the dialog box
-                //activity!!.finish() <-- can possibly remove this altogether. it causes the app to crash.
             }
-            dialog.show()
+            }
+
+        //cancel button
+        val cancelButton = dialog.findViewById<Button>(R.id.cancel)
+
+        cancelButton.setOnClickListener {
+            dialog.dismiss()
         }
+
+        dialog.show()
     }
+
+    private fun isEmpty(etText: EditText): Boolean {
+        return etText.text.toString().trim().isEmpty()
+    }
+}
+
