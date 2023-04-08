@@ -39,7 +39,7 @@
                 android:background="@drawable/custom_input"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
-                android:textTextColor="@color/white"
+                android:textColor="@color/white"
                 android:textSize="17dp" />
 
 
