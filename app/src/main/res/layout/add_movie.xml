@@ -30,16 +30,17 @@
             <EditText
                 android:id="@+id/title"
                 android:layout_width="337dp"
-                android:layout_height="38dp"
+                android:layout_height="43dp"
                 android:layout_marginVertical="20dp"
                 android:layout_marginLeft="22dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginRight="12dp"
-                android:hint="title"
                 android:background="@drawable/custom_input"
+                android:hint="title"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
                 android:textColor="@color/white"
+                android:textColorHint="@color/white"
                 android:textSize="17dp" />
 
 
@@ -52,14 +53,18 @@
                 android:paddingStart="12dp"
                 android:layout_marginRight="12dp"
                 android:hint="description"
+                android:paddingBottom="30dp"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
                 android:background="@drawable/custom_input"
-                android:textSize="20dp" />
+                android:textSize="17dp" />
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingTop="5dp">
 
                 <EditText
                     android:id="@+id/hours"
@@ -70,9 +75,10 @@
                     android:layout_marginRight="12dp"
                     android:background="@drawable/custom_input"
                     android:paddingStart="7dp"
+                    android:hint="hours"
+                    android:textColorHint="@color/white"
                     android:paddingEnd="5dp"
-                    android:text="hours"
-                    android:textSize="15dp"
+                    android:textSize="17dp"
                     android:textColor="@color/white"
                     tools:ignore="HardcodedText,RtlHardcoded,SpUsage"/>
 
@@ -86,9 +92,10 @@
                     android:background="@drawable/custom_input"
                     android:paddingStart="7dp"
                     android:paddingEnd="5dp"
-                    android:text="mins"
                     android:textColor="@color/white"
-                    android:textSize="15dp"
+                    android:hint="mins"
+                    android:textColorHint="@color/white"
+                    android:textSize="17dp"
                     tools:ignore="HardcodedText,RtlHardcoded,SpUsage"/>
             </LinearLayout>
 
@@ -100,24 +107,31 @@
                 android:background="@android:drawable/btn_dropdown"
                 android:spinnerMode="dropdown" />
 
-            <Button
-                android:id="@+id/doneAdding"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="280dp"
-                android:backgroundTint="@color/white"
-                android:text="Done"
-                android:textColor="@color/black" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal"
+                android:paddingTop="10dp">
 
-            <Button
-                android:id="@+id/cancel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                <Button
+                    android:id="@+id/cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Cancel"
+                    android:textColor="@color/white" />
 
-                android:text="Cancel" />
+                <Button
+                    android:id="@+id/doneAdding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="180dp"
+                    android:backgroundTint="@color/white"
+                    android:text="Done"
+                    android:textColor="@color/black" />
 
 
+            </LinearLayout>
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
