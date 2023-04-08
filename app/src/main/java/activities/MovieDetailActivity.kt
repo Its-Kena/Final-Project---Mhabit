@@ -42,6 +42,16 @@ class MovieDetailActivity : AppCompatActivity() {
 
             //SET RATING HERE
             //need to add it to xml first
+            val starBar = findViewById<RatingBar>(R.id.mhabitStarRating);
+            starBar.setOnRatingBarChangeListener { ratingBar, fl, b ->
+                when(ratingBar.rating.toInt()){
+                    1 -> starBar.rating = 1.0F;
+                    2 -> starBar.rating = 2.0F;
+                    3 -> starBar.rating = 3.0F;
+                    4 -> starBar.rating = 4.0F;
+                    5 -> starBar.rating = 5.0F;
+                }
+            }
 
             //set initial description in movie detail screen
             val descriptionText = findViewById<EditText>(R.id.descriptionbox)
@@ -62,14 +72,13 @@ class MovieDetailActivity : AppCompatActivity() {
             //initialize spinner
             val spinner = findViewById<Spinner>(R.id.watchagain)
             if (spinner != null) {
-                //set it up with an ArrayAdapter
                 val adapter = ArrayAdapter(this@MovieDetailActivity, android.R.layout.simple_spinner_item, optionList)
                 spinner.adapter = adapter
             }
 
             spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                    //set watchagain according to to index of optionList since there are only two
+                    //set watchagain according to the index of optionList since there are only two
                     if (position == 0) {
                         watchagain = true
                     } else if (position == 1) {
@@ -91,6 +100,16 @@ class MovieDetailActivity : AppCompatActivity() {
 
                 //UPDATING THE RATING HERE
                 //need to add it to xml first
+                val starBar = findViewById<RatingBar>(R.id.mhabitStarRating);
+                starBar.setOnRatingBarChangeListener { ratingBar, fl, b ->
+                    when(ratingBar.rating.toInt()){
+                        1 -> starBar.rating = 1.0F;
+                        2 -> starBar.rating = 2.0F;
+                        3 -> starBar.rating = 3.0F;
+                        4 -> starBar.rating = 4.0F;
+                        5 -> starBar.rating = 5.0F;
+                    }
+                    }
 
                 //update the description
                 val newDescription = descriptionText.text.toString()

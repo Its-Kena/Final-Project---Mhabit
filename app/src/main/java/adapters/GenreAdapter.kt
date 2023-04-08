@@ -23,6 +23,7 @@ import java.io.Serializable
 class GenreAdapter(context: Context, private val dataSet: List<Movie>) : RecyclerView.Adapter<GenreAdapter.ViewHolder>() {
     private lateinit var movieDb : MovieDatabase
     private var mContext = context
+    //the dataSet is the genreMoviesList from GenreActivity.kt
 
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -32,8 +33,6 @@ class GenreAdapter(context: Context, private val dataSet: List<Movie>) : Recycle
         val movieTitle: TextView = view.findViewById(R.id.feat_title)
         val movieDescription: TextView = view.findViewById(R.id.feat_description)
         val movieRating: RatingBar = view.findViewById(R.id.feat_rating)
-
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder (
@@ -44,11 +43,12 @@ class GenreAdapter(context: Context, private val dataSet: List<Movie>) : Recycle
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentMovie = dataSet[position]
 
+        //set the movie's attributes for its card that will appear in the recyclerview
         holder.movieTitle.text = currentMovie.title
         holder.movieDescription.text = currentMovie.description
         holder.movieRating.rating = currentMovie.rating
 
-        //switch case for genreImage; commented out until drawables are uploaded
+
         var genreDrawable : Int? = null
         when (currentMovie.genre) {
             "Comedy" -> genreDrawable = R.drawable.mhabit_comedy
@@ -67,31 +67,29 @@ class GenreAdapter(context: Context, private val dataSet: List<Movie>) : Recycle
             holder.movieImage.setImageResource(genreDrawable)
         }
 
-
-        //starts MovieDetailActivity when a movie is clicked
+        //starts the movie detail screen for whichever movie the user clicks
+        //sending the movie they clicked into the next activity
         holder.itemView.setOnClickListener {
             startMovieDetails(holder.itemView, currentMovie)
         }
     }
 
+    //called in GenreActivity.kt when the user swipes a movie to the left in the recyclerview
+    //deletes the specific movie object from the database
     fun deleteMovie(i : Int) {
-        // initialize the database
         movieDb = MovieDatabase.getDatabase(mContext as GenreActivity, GlobalScope)
-        //use coroutine to carry out action
         GlobalScope.launch(Dispatchers.IO) {
             movieDb.movieDao().delete(dataSet[i])
         }
     }
 
+    //method that opens the movie details screen
     private fun startMovieDetails(view: View, movie: Movie) {
         val intent = Intent(mContext as GenreActivity, MovieDetailActivity::class.java)
         intent.putExtra("movie", movie as Serializable)
-
         ContextCompat.startActivity(mContext as GenreActivity, intent, null)
     }
 
-
-    //need to change this to only be the amount of movies in that genre-->so a genreMovieListSet
     override fun getItemCount() = dataSet.size
 
 }

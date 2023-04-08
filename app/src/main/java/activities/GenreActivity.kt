@@ -7,6 +7,7 @@ import android.os.Handler
 import android.os.Looper
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.test.R
@@ -26,6 +27,7 @@ class GenreActivity : AppCompatActivity() {
     private lateinit var genreTitle : TextView
     private lateinit var genreDescription : TextView
     private lateinit var genreMovieRecycler : RecyclerView
+    private lateinit var adapter : GenreAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,7 +51,7 @@ class GenreActivity : AppCompatActivity() {
         //initialize the movie database
         movieDb = MovieDatabase.getDatabase(this, GlobalScope)
 
-        //use it within a coroutine to get the list of all movies
+        //use the database within a coroutine to get the list of all movies
         GlobalScope.launch(Dispatchers.IO) {
 
             movieList = movieDb.movieDao().easyGetAll()
@@ -57,7 +59,7 @@ class GenreActivity : AppCompatActivity() {
             //connect this recycler to the genre adapter and layoutmanager
             genreMovieRecycler = findViewById(R.id.mRecyclerView)
             genreMovieRecycler.layoutManager = LinearLayoutManager(this@GenreActivity)
-            val adapter = GenreAdapter(this@GenreActivity, genreMoviesList)
+            adapter = GenreAdapter(this@GenreActivity, genreMoviesList)
             genreMovieRecycler.adapter = adapter
         }
 
@@ -66,6 +68,21 @@ class GenreActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).post {
             //recycler refresh
             genreMovieRecycler.adapter?.notifyDataSetChanged()
+
+            //create swipe to delete gesture and touch helper and then connect it to the recycler
+            val swipegesture = object : SwipeGesture(this@GenreActivity) {
+                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                    when (direction) {
+                        ItemTouchHelper.LEFT -> {
+                            //calls the delete function from GenreAdapter
+                            adapter.deleteMovie(viewHolder.absoluteAdapterPosition)
+                        }
+                    }
+                }
+            }
+
+            val touchHelper = ItemTouchHelper(swipegesture)
+            touchHelper.attachToRecyclerView(genreMovieRecycler)
 
             //iterating through the list of genres [see Genre.kt] until we reach the one the user chose
             for (genre in getGenres()) {
@@ -103,7 +120,6 @@ class GenreActivity : AppCompatActivity() {
             if (genreDrawable != null) {
                 genreImage.setImageResource(genreDrawable)
             }
-
         }
     }
 }
