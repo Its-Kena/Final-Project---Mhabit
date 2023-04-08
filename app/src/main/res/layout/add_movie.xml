@@ -39,7 +39,7 @@
                 android:background="@drawable/custom_input"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
-                android:textTextColor="@color/white"
+                android:textColor="@color/white"
                 android:textSize="17dp" />
 
 
@@ -49,8 +49,10 @@
                 android:layout_width="339dp"
                 android:layout_height="75dp"
                 android:layout_marginLeft="22dp"
+                android:paddingStart="12dp"
                 android:layout_marginRight="12dp"
                 android:hint="description"
+                android:background="@drawable/custom_input"
                 android:textSize="20dp" />
 
 
@@ -101,20 +103,19 @@
             <Button
                 android:id="@+id/doneAdding"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="280dp"
+                android:backgroundTint="@color/white"
                 android:text="Done"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="280dp"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/white"/>
+                android:textColor="@color/black" />
 
             <Button
                 android:id="@+id/cancel"
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="Cancel"
-                android:layout_marginStart="220dp"/>
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
 
-
+                android:text="Cancel" />
 
 
         </LinearLayout>
