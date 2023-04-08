@@ -56,7 +56,7 @@ class GenreAdapter(context: Context, private val dataSet: List<Movie>) : Recycle
             "Animated" -> genreDrawable = 0
             "Horror" -> genreDrawable = 0
             "Romance" -> genreDrawable = 0
-            "Action" -> genreDrawable = 0
+            "Action" -> genreDrawable = R.drawable.mhabit_action
             "Other" -> genreDrawable = 0
             else -> {
                 print("ERROR: genre is none of the above")
