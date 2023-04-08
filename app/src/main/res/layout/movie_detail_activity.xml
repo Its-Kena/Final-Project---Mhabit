@@ -18,7 +18,15 @@
             android:background="#00000000"
             android:textColorHint="@color/black"
             />
-
+        <RatingBar
+            android:id="@+id/mhabitStarRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:rating="0"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:isIndicator="false"
+            />
         <EditText
             android:id="@+id/descriptionbox"
             android:layout_width="360dp"
