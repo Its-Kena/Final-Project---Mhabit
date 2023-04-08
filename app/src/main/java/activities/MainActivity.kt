@@ -7,6 +7,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -82,12 +83,21 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        //Bryce's work for Friday's demo
+        // makes the comedy genre button work - Bryce
         val b1 = findViewById<Button>(R.id.genre1)
         b1.setOnClickListener {
             val Intent = Intent(this, ComedyActivity::class.java)
             startActivity(Intent)
+            // attempt to change comedy_page values from this activity
+            var featTitle = findViewById<TextView>(R.id.feat_title)
+            featTitle.text = "Action"
+
         }
+
+
+
+
+
     }
 
 
