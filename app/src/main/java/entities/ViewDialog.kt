@@ -28,7 +28,7 @@ class ViewDialog(context: Context) {
 
         movieDb = MovieDatabase.getDatabase(mContext as MainActivity, GlobalScope)
 
-        val genres =
+        val genres : Array<String> =
             arrayOf("Comedy", "Thriller", "Animated", "Horror", "Romance", "Action", "Other")
 
         val genreList = genres.toMutableList()
@@ -40,7 +40,7 @@ class ViewDialog(context: Context) {
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
 
-        var genre: Int? = null
+        var genre: String? = null
 
         //creating the dropdown box
         val spinner = dialog.findViewById<Spinner>(R.id.genre)
@@ -57,7 +57,7 @@ class ViewDialog(context: Context) {
                 position: Int,
                 id: Long
             ) {
-                genre = position
+                genre = parent.getItemAtPosition(position).toString()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -82,6 +82,8 @@ class ViewDialog(context: Context) {
             var hours = dialog.findViewById<EditText>(R.id.hours).text.toString()
             var minutes = dialog.findViewById<EditText>(R.id.mins).text.toString()
 
+            //disables adding a new movie if any of those fields are empty but the button is no longer usable after this
+            //so this is a temporary measure
             if (isEmpty(dialogTitle)|| isEmpty(dialogDescription)  ||
                 isEmpty((dialogHours)) || isEmpty(dialogMinutes)
             ) {

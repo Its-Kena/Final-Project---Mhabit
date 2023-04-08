@@ -49,11 +49,31 @@ class MovieAdapter(context: Context, private val dataSet: List<Movie>): Recycler
         //data is what holds all the movies
         val currentItem = data[position]
 
-        //holder.image.setImageResource(currentItem.genre!!)//genrePic resource is defined in movie.kt class for movie image
         holder.title.text = currentItem.title
         holder.description.text = currentItem.description
         holder.rating.rating = currentItem.rating
         //the first rating is defined in ViewHolder above and  the second is defined in movie.kt
+
+        //switch case for setting the genre image; commented out until drawables are uploaded
+        var genreDrawable : Int? = null
+        when (currentItem.genre) {
+            "Comedy" -> genreDrawable = R.drawable.mhabit_comedy
+            "Thriller" -> genreDrawable = 0
+            "Animated" -> genreDrawable = 0
+            "Horror" -> genreDrawable = 0
+            "Romance" -> genreDrawable = 0
+            "Action" -> genreDrawable = 0
+            "Other" -> genreDrawable = 0
+            else -> {
+                print("ERROR: genre is none of the above")
+            }
+        }
+
+        if (genreDrawable != null) {
+            holder.image.setImageResource(genreDrawable)
+        }
+
+
 
         //starts MovieDetailActivity when a movie is clicked
         holder.itemView.setOnClickListener {

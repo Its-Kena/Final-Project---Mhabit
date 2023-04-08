@@ -6,15 +6,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/genre_image"
         android:layout_width="102dp"
         android:layout_height="109dp"
         android:layout_marginStart="24dp"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintBottom_toTopOf="@+id/mRecyclerView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton"
-        app:srcCompat="@drawable/mhabit_comedy" />
+         />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -26,29 +26,28 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.266"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintStart_toEndOf="@+id/genre_image"
         app:layout_constraintTop_toBottomOf="@+id/imageButton">
 
         <TextView
-            android:id="@+id/feat_title"
+            android:id="@+id/genre_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
-            android:text="Comedy"
             android:textSize="17dp" />
 
 
         <TextView
-            android:id="@+id/feat_description"
+            android:id="@+id/genre_description"
             android:layout_width="259dp"
             android:layout_height="70dp"
             android:maxHeight="65dp"
             android:paddingLeft="20dp"
-            android:text="Looking for a laugh? Here are the movies you listed under the comedy genre. Make sure to leave a review! " />
+             />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/mRecyclerView"
         android:layout_width="408dp"
         android:layout_height="546dp"
         android:layout_marginTop="16dp"

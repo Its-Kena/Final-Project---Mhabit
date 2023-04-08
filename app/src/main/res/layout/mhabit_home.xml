@@ -95,60 +95,67 @@
             android:padding="20px">
 
             <Button
-                android:id="@+id/genre1"
+                android:id="@+id/comedy"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10px"
                 android:backgroundTint="@color/black"
-                android:text="Comedy" />
+                android:text="Comedy"
+                android:onClick="genreClicked"/>
 
             <Button
-                android:id="@+id/genre2"
+                android:id="@+id/thriller"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10px"
                 android:backgroundTint="@color/black"
-                android:text="Thriller" />
+                android:text="Thriller"
+                android:onClick="genreClicked"/>
 
             <Button
-                android:id="@+id/genre3"
+                android:id="@+id/animated"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10px"
                 android:backgroundTint="@color/black"
-                android:text="Animated" />
+                android:text="Animated"
+                android:onClick="genreClicked"/>
 
             <Button
-                android:id="@+id/genre4"
+                android:id="@+id/horror"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10px"
                 android:backgroundTint="@color/black"
-                android:text="Horror" />
+                android:text="Horror"
+                android:onClick="genreClicked"/>
 
             <Button
-                android:id="@+id/genre5"
+                android:id="@+id/romance"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10px"
                 android:backgroundTint="@color/black"
-                android:text="Romance" />
+                android:text="Romance"
+                android:onClick="genreClicked"/>
 
             <Button
-                android:id="@+id/genre6"
+                android:id="@+id/action"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10px"
                 android:backgroundTint="@color/black"
-                android:text="Action/Adventure" />
+                android:text="Action/Adventure"
+                android:onClick="genreClicked"/>
 
             <Button
-                android:id="@+id/genre7"
+                android:id="@+id/other"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginHorizontal="10px"
                 android:backgroundTint="@color/black"
-                android:text="Other" />
+                android:text="Other"
+                android:onClick="genreClicked"/>
         </LinearLayout>
 
     </HorizontalScrollView>
