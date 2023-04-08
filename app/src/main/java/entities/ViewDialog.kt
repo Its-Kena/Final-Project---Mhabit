@@ -1,7 +1,6 @@
 package entities
 
 import activities.MainActivity
-import adapters.MovieAdapter
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
@@ -10,12 +9,8 @@ import android.graphics.drawable.ColorDrawable
 import android.view.View
 import android.view.Window
 import android.widget.*
-import androidx.activity.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.test.R
 import kotlinx.coroutines.*
-import kotlin.coroutines.coroutineContext
 
 
 class ViewDialog(context: Context) {
@@ -24,14 +19,13 @@ class ViewDialog(context: Context) {
 
 
     fun showAddMovieDialog(activity: Activity?) {
-
-
+        //initialize the movie database
         movieDb = MovieDatabase.getDatabase(mContext as MainActivity, GlobalScope)
 
-        val genres : Array<String> =
+        //create list of genres for user to choose from
+        val genreList =
             arrayOf("Comedy", "Thriller", "Animated", "Horror", "Romance", "Action", "Other")
-
-        val genreList = genres.toMutableList()
+                .toMutableList()
 
         val dialog = Dialog(activity!!)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -39,10 +33,10 @@ class ViewDialog(context: Context) {
         dialog.setContentView(R.layout.add_movie)
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-
+        //set initial genre value and create the dropdown box for user to choose one
         var genre: String? = null
 
-        //creating the dropdown box
+        //initialize spinner
         val spinner = dialog.findViewById<Spinner>(R.id.genre)
         if (spinner != null) {
             val adapter = ArrayAdapter(activity, android.R.layout.simple_spinner_item, genreList)
@@ -50,65 +44,55 @@ class ViewDialog(context: Context) {
         }
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-
-            override fun onItemSelected(
-                parent: AdapterView<*>,
-                view: View,
-                position: Int,
-                id: Long
-            ) {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                //set genre to whatever item the user chose
                 genre = parent.getItemAtPosition(position).toString()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                TODO("Not yet implemented")
+                //don't need to put anything here for our purposes right now
             }
         }
 
+        ////grab each of the views from this dialog that we want to use
+        val dialogTitle = dialog.findViewById<EditText>(R.id.title)
+        val dialogDescription = dialog.findViewById<EditText>(R.id.description)
+        val dialogHours = dialog.findViewById<EditText>(R.id.hours)
+        val dialogMinutes = dialog.findViewById<EditText>(R.id.mins)
         val doneButton = dialog.findViewById<Button>(R.id.doneAdding)
 
-
-        var dialogTitle = dialog.findViewById<EditText>(R.id.title)
-        var dialogDescription = dialog.findViewById<EditText>(R.id.description)
-        var dialogHours = dialog.findViewById<EditText>(R.id.hours)
-        var dialogMinutes = dialog.findViewById<EditText>(R.id.mins)
-
-
-        //when done button is clicked
+        //when the confirm/done button is clicked
         doneButton.setOnClickListener {
             //set the variables to whatever the user input is
-            var title = dialog.findViewById<EditText>(R.id.title).text.toString()
-            var description = dialog.findViewById<EditText>(R.id.description).text.toString()
-            var hours = dialog.findViewById<EditText>(R.id.hours).text.toString()
-            var minutes = dialog.findViewById<EditText>(R.id.mins).text.toString()
+            val title = dialogTitle.text.toString()
+            val description = dialogDescription.text.toString()
+            val hours = dialogHours.text.toString()
+            val minutes = dialogMinutes.text.toString()
 
-            //disables adding a new movie if any of those fields are empty but the button is no longer usable after this
+            //disables adding a new movie if any of those fields are empty
+            //BUT the button is no longer usable after this -- even if the user fills everything in
             //so this is a temporary measure
-            if (isEmpty(dialogTitle)|| isEmpty(dialogDescription)  ||
-                isEmpty((dialogHours)) || isEmpty(dialogMinutes)
-            ) {
+            if (isEmpty(dialogTitle)|| isEmpty(dialogDescription) || isEmpty((dialogHours)) || isEmpty(dialogMinutes)) {
                 doneButton.isEnabled = false
                 doneButton.isClickable = false
             } else {
-                //create a new movie object with those variables
+                //a new movie object is created with the information the user entered
                 val movie = Movie(
                     title, description, genre, hours.toInt(), minutes.toInt(), 0f, null, null, null
                 )
 
-
-                // add movie to database
+                //the new movie is added to the database
                 GlobalScope.launch(Dispatchers.IO) {
-
                     movieDb.movieDao().insert(movie)
                 }
 
-                dialog.dismiss() //closes the dialog box
+                //the dialog box closes
+                dialog.dismiss()
             }
-            }
+        }
 
-        //cancel button
+        //allows the user to close the dialog box at any time
         val cancelButton = dialog.findViewById<Button>(R.id.cancel)
-
         cancelButton.setOnClickListener {
             dialog.dismiss()
         }
@@ -116,8 +100,9 @@ class ViewDialog(context: Context) {
         dialog.show()
     }
 
-    private fun isEmpty(etText: EditText): Boolean {
-        return etText.text.toString().trim().isEmpty()
+    //helper method to check if the content of an EditText view is empty
+    private fun isEmpty(editText: EditText): Boolean {
+        return editText.text.toString().trim().isEmpty()
     }
 }
 

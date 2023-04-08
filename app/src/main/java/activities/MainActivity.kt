@@ -55,11 +55,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 //connect allMoviesRecycler to appropriate adapter and set its layout manager
                 movieList = movies
                 val allMoviesRecycler = findViewById<RecyclerView>(R.id.all_movies)
-                val adapter = MovieAdapter(this, movies)
+                val adapter = MovieAdapter(this, movieList)
                 allMoviesRecycler.adapter = adapter
                 allMoviesRecycler.layoutManager = LinearLayoutManager(this)
 
-                //create swipe gesture and touch helper and then connect it to the recycler we just made
+                //create the swipe to delete gesture and touch helper and then connect it to the recycler
                 val swipegesture = object : SwipeGesture(this) {
                     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                         when (direction) {
@@ -74,9 +74,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val touchHelper = ItemTouchHelper(swipegesture)
                 touchHelper.attachToRecyclerView(allMoviesRecycler)
             }
-
         })
-
 
         //set up pop up for adding movie
         var addButton = findViewById<Button>(R.id.add_movie)

@@ -62,14 +62,13 @@ class MovieDetailActivity : AppCompatActivity() {
             //initialize spinner
             val spinner = findViewById<Spinner>(R.id.watchagain)
             if (spinner != null) {
-                //set it up with an ArrayAdapter
                 val adapter = ArrayAdapter(this@MovieDetailActivity, android.R.layout.simple_spinner_item, optionList)
                 spinner.adapter = adapter
             }
 
             spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                    //set watchagain according to to index of optionList since there are only two
+                    //set watchagain according to the index of optionList since there are only two
                     if (position == 0) {
                         watchagain = true
                     } else if (position == 1) {

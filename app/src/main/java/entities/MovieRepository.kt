@@ -13,7 +13,6 @@ class MovieRepository(private val movieDao: MovieDao) {
         movieDao.insert(movie)
     }
 
-
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
     suspend fun update(movie : Movie) {
