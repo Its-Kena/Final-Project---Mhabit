@@ -1,39 +1,32 @@
 package adapters
 
 import activities.GenreActivity
-import activities.MainActivity
 import activities.MovieDetailActivity
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewParent
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Recycler
 import com.example.test.R
-import entities.Genre
 import entities.Movie
 import entities.MovieDatabase
-import entities.getGenres
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.io.Serializable
 
-class GenreAdapter(context: Context, private val dataSet: List<Movie>, genreChosen: String?) : RecyclerView.Adapter<GenreAdapter.ViewHolder>() {
+class GenreAdapter(context: Context, private val dataSet: List<Movie>) : RecyclerView.Adapter<GenreAdapter.ViewHolder>() {
     private lateinit var movieDb : MovieDatabase
-    private var genreChosen = genreChosen
     private var mContext = context
 
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        //connects to the different views in the genre_activity.xml
+        //connects to the different views in the movie_card.xml
 
         val movieImage: ImageView = view.findViewById(R.id.feat_genre)
         val movieTitle: TextView = view.findViewById(R.id.feat_title)

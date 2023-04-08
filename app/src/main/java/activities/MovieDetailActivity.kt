@@ -1,12 +1,9 @@
 package activities
 
-import android.app.Activity
-import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.*
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.test.R
 import com.example.test.databinding.MovieDetailActivityBinding
@@ -14,11 +11,9 @@ import entities.Movie
 import entities.MovieDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
-import java.io.Serializable
 
-class MovieDetailActivity() : AppCompatActivity() {
+class MovieDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: MovieDetailActivityBinding
     private lateinit var movieDb : MovieDatabase
@@ -29,107 +24,105 @@ class MovieDetailActivity() : AppCompatActivity() {
         binding = MovieDetailActivityBinding.inflate(layoutInflater)
         setContentView(R.layout.movie_detail_activity)
 
+        //grab the movie that was selected from the recyclerview in main activity
         val bundle: Bundle? = intent.extras
-
         bundle?.apply {
-            //Serializable Data
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                movieItem = getSerializable("movie", Movie::class.java)
+            //we have to account for the version and build number on user's device when using the getSerializable method
+            movieItem = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                getSerializable("movie", Movie::class.java)
             } else {
-                movieItem = getSerializable("movie") as Movie
+                getSerializable("movie") as Movie
             }
-            if (movieItem != null) {
 
-                //SET TITLE
-                val titleText = findViewById<EditText>(R.id.title)
-                titleText.setText(movieItem?.title)
 
-                //SET RATING
+            //set initial title in movie detail screen
+            val titleText = findViewById<EditText>(R.id.title)
+            titleText.setText(movieItem?.title)
+
+            //SET RATING HERE
+            //need to add it to xml first
+
+            //set initial description in movie detail screen
+            val descriptionText = findViewById<EditText>(R.id.descriptionbox)
+            descriptionText.setText(movieItem?.description)
+
+            //set initial hour(s) in movie detail screen
+            val hourText = findViewById<EditText>(R.id.hours)
+            hourText.setText(movieItem?.hours.toString())
+
+            //set initial minutes in movie detail screen
+            val minText = findViewById<EditText>(R.id.minutes)
+            minText.setText(movieItem?.minutes.toString())
+
+            //set initial watchAgain value and create the dropdown box for user to choose
+            var watchagain : Boolean? = null
+            val optionList = arrayOf("Yes", "No").toMutableList()
+
+            //initialize spinner
+            val spinner = findViewById<Spinner>(R.id.watchagain)
+            if (spinner != null) {
+                //set it up with an ArrayAdapter
+                val adapter = ArrayAdapter(this@MovieDetailActivity, android.R.layout.simple_spinner_item, optionList)
+                spinner.adapter = adapter
+            }
+
+            spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                    //set watchagain according to to index of optionList since there are only two
+                    if (position == 0) {
+                        watchagain = true
+                    } else if (position == 1) {
+                        watchagain = false
+                    }
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                    //don't need to put anything here for our purposes right now
+                }
+            }
+
+            //save edits when button is clicked
+            findViewById<Button>(R.id.save).setOnClickListener {
+
+                //update the title
+                val newTitle = titleText.text.toString()
+                movieItem?.title = newTitle
+
+                //UPDATING THE RATING HERE
                 //need to add it to xml first
 
-                //SET DESCRIPTION
-                val descriptionText = findViewById<EditText>(R.id.descriptionbox)
-                descriptionText.setText(movieItem?.description)
+                //update the description
+                val newDescription = descriptionText.text.toString()
+                movieItem?.description = newDescription
 
-                //SET HOURS
-                val hourText = findViewById<EditText>(R.id.hours)
-                hourText.setText(movieItem?.hours.toString())
+                //update the hour(s)
+                val newHours = hourText.text.toString().toInt()
+                movieItem?.hours = newHours
 
-                //SET MINS
-                val minText = findViewById<EditText>(R.id.minutes)
-                minText.setText(movieItem?.minutes.toString())
+                //update the minutes
+                val newMins = minText.text.toString().toInt()
+                movieItem?.minutes = newMins
 
-                //SET WATCHAGAIN
-                var watchagain : Boolean? = null
+                //update the review
+                val reviewText = findViewById<EditText>(R.id.reviewbox)
+                val review = reviewText.text.toString()
+                movieItem?.review = review
 
+                //update watchagain value
+                movieItem?.WatchAgain = watchagain
 
-                //creating the dropdown box
-                val options = arrayOf("Yes", "No")
+                //call the update helper method
+                updateMovie()
 
-                val optionList = options.toMutableList()
-                val spinner = findViewById<Spinner>(R.id.watchagain)
-                if (spinner != null) {
-                    val adapter = ArrayAdapter(this@MovieDetailActivity, android.R.layout.simple_spinner_item, optionList)
-                    spinner.adapter = adapter
-                }
-
-                spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-
-                    override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                        if (position == 0) {
-                            watchagain = true
-                        } else if (position == 1)
-                            watchagain = false
-                    }
-
-                    override fun onNothingSelected(parent: AdapterView<*>?) {
-                        TODO("Not yet implemented")
-                    }
-                }
-                //SAVE EDITS
-                findViewById<Button>(R.id.save).setOnClickListener {
-
-                    //update title
-                    var newTitle = titleText.text.toString()
-                    movieItem?.title = newTitle
-
-                    //update rating
-                    //need to add it to xml first
-
-                    //update description
-                    var newDescription = descriptionText.text.toString()
-                    movieItem?.description = newDescription
-
-                    //update hours
-                    var newHours = hourText.text.toString().toInt()
-                    movieItem?.hours = newHours
-
-                    //update mins
-                    var newMins = minText.text.toString().toInt()
-                    movieItem?.minutes = newMins
-
-                    //update review
-                    val reviewText = findViewById<EditText>(R.id.reviewbox)
-                    var review = reviewText.text.toString()
-                    movieItem?.review = review
-
-                    //update watchagain
-                    movieItem?.WatchAgain = watchagain
-
-                    updateMovie()
-                    finish()
-                }
-
+                //exit out of this activity and return to the main activity
+                finish()
             }
-
-
-
         }
-        }
+    }
 
-        fun updateMovie() {
-            //use coroutine to carry out action
+    //helper method that updates the specific movie object within the database
+    private fun updateMovie() {
             movieDb = MovieDatabase.getDatabase(this, GlobalScope)
             GlobalScope.launch(Dispatchers.IO) {
                 movieDb.movieDao().update(movieItem) }
