@@ -100,6 +100,16 @@ class MovieDetailActivity : AppCompatActivity() {
 
                 //UPDATING THE RATING HERE
                 //need to add it to xml first
+                val starBar = findViewById<RatingBar>(R.id.mhabitStarRating);
+                starBar.setOnRatingBarChangeListener { ratingBar, fl, b ->
+                    when(ratingBar.rating.toInt()){
+                        1 -> starBar.rating = 1.0F;
+                        2 -> starBar.rating = 2.0F;
+                        3 -> starBar.rating = 3.0F;
+                        4 -> starBar.rating = 4.0F;
+                        5 -> starBar.rating = 5.0F;
+                    }
+                    }
 
                 //update the description
                 val newDescription = descriptionText.text.toString()
