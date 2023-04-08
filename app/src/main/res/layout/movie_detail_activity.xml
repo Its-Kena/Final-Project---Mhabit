@@ -24,9 +24,10 @@
             android:layout_height="wrap_content"
             android:numStars="5"
             android:rating="0"
+            android:stepSize="1"
             style="@style/Widget.AppCompat.RatingBar.Small"
-            android:isIndicator="false"
-            />
+            android:isIndicator="false"/>
+
         <EditText
             android:id="@+id/descriptionbox"
             android:layout_width="360dp"
