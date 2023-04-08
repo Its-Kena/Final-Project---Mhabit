@@ -3,10 +3,8 @@ package adapters
 
 import activities.MainActivity
 import activities.MovieDetailActivity
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,36 +23,33 @@ import java.io.Serializable
 
 
 class MovieAdapter(context: Context, private val dataSet: List<Movie>): RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
-    private val data = dataSet.toMutableList()
     private lateinit var movieDb : MovieDatabase
     private var mContext = context
+    //the dataSet is the movieList from MainActivity.kt
+
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        //connects to the 4 different views in the movie_card.xml
+        //connects to the different views in the movie_card.xml
+
         val image: ImageView = view.findViewById(R.id.feat_genre)
         val title: TextView = view.findViewById(R.id.feat_title)
         val description: TextView = view.findViewById(R.id.feat_description)
         val rating: RatingBar = view.findViewById(R.id.feat_rating)
-
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.movie_card, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder (
+        LayoutInflater.from(parent.context).inflate(R.layout.movie_card, parent, false)
 
-        return ViewHolder(view)
-
-    }
+    )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        //data is what holds all the movies
-        val currentItem = data[position]
+        val currentItem = dataSet[position]
 
+        //set the movie's attributes for its card that will appear in the recyclerview
         holder.title.text = currentItem.title
         holder.description.text = currentItem.description
         holder.rating.rating = currentItem.rating
-        //the first rating is defined in ViewHolder above and  the second is defined in movie.kt
 
-        //switch case for setting the genre image; commented out until drawables are uploaded
         var genreDrawable : Int? = null
         when (currentItem.genre) {
             "Comedy" -> genreDrawable = R.drawable.mhabit_comedy
@@ -73,40 +68,29 @@ class MovieAdapter(context: Context, private val dataSet: List<Movie>): Recycler
             holder.image.setImageResource(genreDrawable)
         }
 
-
-
-        //starts MovieDetailActivity when a movie is clicked
+        //starts the movie detail screen for whichever movie the user clicks
+        //sending the movie they clicked into the next activity
         holder.itemView.setOnClickListener {
             startMovieDetails(holder.itemView, currentItem)
         }
     }
 
-    //method to delete a movie from the database, used in MainActivity for swipegesture
+    //called in MainActivity.kt when the user swipes a movie to the left in the recyclerview
+    //deletes the specific movie object from the database
     fun deleteMovie(i : Int) {
-        // initialize the database
         movieDb = MovieDatabase.getDatabase(mContext as MainActivity, GlobalScope)
-        //use coroutine to carry out action
         GlobalScope.launch(Dispatchers.IO) {
-            movieDb.movieDao().delete(data[i])
+            movieDb.movieDao().delete(dataSet[i])
         }
     }
 
+    //method that opens the movie details screen
     private fun startMovieDetails(view: View, movie: Movie) {
         val intent = Intent(mContext as MainActivity, MovieDetailActivity::class.java)
         intent.putExtra("movie", movie as Serializable)
-
         startActivity(mContext as MainActivity,intent, null)
     }
 
-    override fun getItemCount() = data.size
-
-    /*
-    // created add function 30March23 *Denyka
-    fun add(movie: Movie) {
-        data.add(movie)
-        notifyItemInserted(data.size - 1)
-    }
-
-     */
+    override fun getItemCount() = dataSet.size
 
 }

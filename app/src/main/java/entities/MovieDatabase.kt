@@ -25,25 +25,19 @@ abstract class MovieDatabase: RoomDatabase() {
                 ).addCallback(MovieCallback(scope))
                     .build()
                 INSTANCE = instance
-
                 instance
             }
         }
-
     }
 
     private class MovieCallback(val scope: CoroutineScope): RoomDatabase.Callback(){
-            override fun onCreate(db: SupportSQLiteDatabase) {
-
-                super.onCreate(db)
-                INSTANCE?.let {
-
-                    scope.launch {
-
-                    }
+        override fun onCreate(db: SupportSQLiteDatabase) {
+            super.onCreate(db)
+            INSTANCE?.let {
+                scope.launch {
 
                 }
             }
+        }
     }
-
 }

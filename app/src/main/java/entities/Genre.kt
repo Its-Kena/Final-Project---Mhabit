@@ -4,11 +4,11 @@ import androidx.room.ColumnInfo
 import com.example.test.R
 
 data class Genre (
-
     var genreName: String,
     var genreDescription: String,
-        ) : java.io.Serializable
+)
 
+    //create all genre objects used within the app
     var comedy =  Genre("Comedy", "Looking for a laugh? Here are the movies you listed under the comedy genre. Make sure to leave a review!")
     var thriller = Genre("Thriller", "")
     var animated = Genre("Animated","")
@@ -17,9 +17,11 @@ data class Genre (
     var action = Genre("Action","")
     var other = Genre("Other", "")
 
-val genreArray = arrayOf(comedy, thriller, animated, horror, romance, action, other)
+    //add those genre objects to an array
+    val genreArray = arrayOf(comedy, thriller, animated, horror, romance, action, other)
 
-fun getGenres() : List<Genre> {
-    return genreArray.toMutableList()
-}
+    //conveniently return a list of all the genre objects
+    fun getGenres() : List<Genre> {
+        return genreArray.toMutableList()
+    }
 
