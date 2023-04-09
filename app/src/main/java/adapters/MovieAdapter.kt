@@ -53,12 +53,12 @@ class MovieAdapter(context: Context, private val dataSet: List<Movie>): Recycler
         var genreDrawable : Int? = null
         when (currentItem.genre) {
             "Comedy" -> genreDrawable = R.drawable.mhabit_comedy
-            "Thriller" -> genreDrawable = 0
-            "Animated" -> genreDrawable = 0
-            "Horror" -> genreDrawable = 0
-            "Romance" -> genreDrawable = 0
+            "Thriller" -> genreDrawable = R.drawable.mhabit_thriller
+            "Animated" -> genreDrawable = R.drawable.mhabit_anime
+            "Horror" -> genreDrawable = R.drawable.mhabit_horror
+            "Romance" -> genreDrawable = R.drawable.mhabit_romance
             "Action" -> genreDrawable = R.drawable.mhabit_action
-            "Other" -> genreDrawable = 0
+            "Other" -> genreDrawable = R.drawable.mhabit_other
             else -> {
                 print("ERROR: genre is none of the above")
             }
