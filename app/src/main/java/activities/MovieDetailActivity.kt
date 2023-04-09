@@ -45,12 +45,13 @@ class MovieDetailActivity : AppCompatActivity() {
             val starBar = findViewById<RatingBar>(R.id.mhabitStarRating);
             starBar.setOnRatingBarChangeListener { ratingBar, fl, b ->
                 when(ratingBar.rating.toInt()){
-                    1 -> starBar.rating = 1.0F;
-                    2 -> starBar.rating = 2.0F;
-                    3 -> starBar.rating = 3.0F;
-                    4 -> starBar.rating = 4.0F;
-                    5 -> starBar.rating = 5.0F;
+                    1 -> movieItem?.rating = 1F;
+                    2 -> movieItem?.rating = 2F;
+                    3 -> movieItem?.rating = 3F;
+                    4 -> movieItem?.rating = 4F;
+                    5 -> movieItem?.rating = 5F;
                 }
+
             }
 
             //set initial description in movie detail screen
