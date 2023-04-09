@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 touchHelper.attachToRecyclerView(allMoviesRecycler)
 
                 //scroll to position of newly added item
-                allMoviesRecycler.scrollToPosition(adapter.itemCount - 1)
+                allMoviesRecycler.smoothScrollToPosition(adapter.itemCount - 1)
 
             }
         })
