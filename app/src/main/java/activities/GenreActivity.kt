@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -120,6 +122,9 @@ class GenreActivity : AppCompatActivity() {
             if (genreDrawable != null) {
                 genreImage.setImageResource(genreDrawable)
             }
+        }
+        findViewById<ImageButton>(R.id.back_to_all).setOnClickListener {
+            finish()
         }
     }
 }
