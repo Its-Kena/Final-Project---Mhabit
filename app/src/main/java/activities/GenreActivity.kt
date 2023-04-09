@@ -123,6 +123,7 @@ class GenreActivity : AppCompatActivity() {
                 genreImage.setImageResource(genreDrawable)
             }
         }
+        //return to home
         findViewById<ImageButton>(R.id.back_to_all).setOnClickListener {
             finish()
         }

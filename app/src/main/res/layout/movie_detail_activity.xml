@@ -1,23 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_margin="23dp">
 
+        <ImageButton
+            android:id="@+id/back_to_all"
+            android:layout_width="124dp"
+            android:layout_height="41dp"
+            android:backgroundTint="@color/white"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/back_button"
+            />
+
         <EditText
             android:id="@+id/title"
-            android:contentDescription="title"
-            android:layout_width="wrap_content"
+            android:layout_width="161dp"
             android:layout_height="wrap_content"
             android:background="#00000000"
-            android:textColorHint="@color/black"
-            />
+            android:contentDescription="title"
+            android:textColorHint="@color/black" />
         <RatingBar
             android:id="@+id/mhabitStarRating"
             android:layout_width="wrap_content"
@@ -87,10 +95,10 @@
             android:singleLine="true"/>
 
         <Button
-        android:id="@+id/save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save edits"/>
+            android:id="@+id/save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save edits" />
 
     </LinearLayout>
 

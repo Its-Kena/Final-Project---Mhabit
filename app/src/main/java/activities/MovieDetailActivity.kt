@@ -90,7 +90,10 @@ class MovieDetailActivity : AppCompatActivity() {
                     //don't need to put anything here for our purposes right now
                 }
             }
-
+            //return to home
+            findViewById<ImageButton>(R.id.back_to_all).setOnClickListener {
+                finish()
+            }
             //save edits when button is clicked
             findViewById<Button>(R.id.save).setOnClickListener {
 
@@ -146,6 +149,8 @@ class MovieDetailActivity : AppCompatActivity() {
             GlobalScope.launch(Dispatchers.IO) {
                 movieDb.movieDao().update(movieItem) }
             }
+
+
         }
 
 

@@ -7,15 +7,15 @@
 
     <ImageView
         android:id="@+id/genre_image"
-        android:layout_width="102dp"
-        android:layout_height="109dp"
+        android:layout_width="104dp"
+        android:layout_height="108dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="18dp"
         android:paddingTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/back_to_all"
         app:layout_constraintVertical_bias="0.0" />
@@ -24,8 +24,8 @@
         android:id="@+id/linearLayout"
         android:layout_width="259dp"
         android:layout_height="98dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="28dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/back_to_all">
@@ -48,12 +48,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mRecyclerView"
-        android:layout_width="410dp"
-        android:layout_height="670dp"
+        android:layout_width="409dp"
+        android:layout_height="572dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/genre_image"
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageButton
