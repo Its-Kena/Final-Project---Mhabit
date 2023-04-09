@@ -65,6 +65,12 @@ class MovieDetailActivity : AppCompatActivity() {
             val minText = findViewById<EditText>(R.id.minutes)
             minText.setText(movieItem?.minutes.toString())
 
+            //set the initial review in movie detail screen
+            val reviewText = findViewById<EditText>(R.id.reviewbox)
+            if (movieItem?.review != null) {
+                reviewText.setText(movieItem?.review.toString())
+            }
+
             //set initial watchAgain value and create the dropdown box for user to choose
             var watchagain : Boolean? = null
             val optionList = arrayOf("Yes", "No").toMutableList()
@@ -127,7 +133,6 @@ class MovieDetailActivity : AppCompatActivity() {
                 movieItem?.minutes = newMins
 
                 //update the review
-                val reviewText = findViewById<EditText>(R.id.reviewbox)
                 val review = reviewText.text.toString()
                 movieItem?.review = review
 
