@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.activity.viewModels
+import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -30,6 +32,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = MhabitHomeBinding.inflate(layoutInflater)
         setContentView(R.layout.mhabit_home) //this will be changed to the layout name of our main screen once the app is complete. this defines where the user will start upon opening the app.
+
+
+
 
         //grab buttons and attach onClickListeners for future use with a convenient when/switch case
         val comedyButton = findViewById<Button>(R.id.comedy)
@@ -59,6 +64,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 allMoviesRecycler.adapter = adapter
                 allMoviesRecycler.layoutManager = LinearLayoutManager(this)
 
+
+
+
+
                 //create the swipe to delete gesture and touch helper and then connect it to the recycler
                 val swipegesture = object : SwipeGesture(this) {
                     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
@@ -73,6 +82,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 val touchHelper = ItemTouchHelper(swipegesture)
                 touchHelper.attachToRecyclerView(allMoviesRecycler)
+
+                //scroll to position of newly added item
+                allMoviesRecycler.scrollToPosition(adapter.itemCount - 1)
+
             }
         })
 
@@ -80,14 +93,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         var addButton = findViewById<Button>(R.id.add_movie)
 
         addButton.setOnClickListener {
-            //see ViewDialog file
+
+            // See ViewDialog file
             val alert = ViewDialog(this@MainActivity)
             alert.showAddMovieDialog(this)
 
             //this ScrollToPosition doesn't work --> needs to be fixed
-            binding.allMovies.smoothScrollToPosition(MovieAdapter(this, movieList).itemCount - 1)
+            //binding.allMovies.smoothScrollToPosition(MovieAdapter(this, movieList).itemCount - 1)
+
 
         }
+
     }
 
     //method that opens the genre view screen

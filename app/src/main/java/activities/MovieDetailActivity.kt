@@ -4,6 +4,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import com.example.test.R
 import com.example.test.databinding.MovieDetailActivityBinding
@@ -139,11 +140,18 @@ class MovieDetailActivity : AppCompatActivity() {
                 //update watchagain value
                 movieItem?.WatchAgain = watchagain
 
+
+                // get the position of the selected movie item
+                val position = intent.getIntExtra("position", -1)
                 //call the update helper method
                 updateMovie()
 
+
+
                 //exit out of this activity and return to the main activity
                 finish()
+
+
             }
         }
     }
