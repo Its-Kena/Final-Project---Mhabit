@@ -170,7 +170,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/all_movies"
-        android:layout_width="408dp"
+        android:layout_width="wrap_content"
         android:layout_height="479dp"
         android:background="@color/white"
         android:fadeScrollbars="true"

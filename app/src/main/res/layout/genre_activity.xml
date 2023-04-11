@@ -48,9 +48,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mRecyclerView"
-        android:layout_width="404dp"
+        android:layout_width="wrap_content"
         android:layout_height="533dp"
         android:layout_marginTop="24dp"
+        android:fadeScrollbars="true"
+        android:scrollbarStyle="insideInset"
+        android:scrollbarThumbVertical="@android:color/black"
+        android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
