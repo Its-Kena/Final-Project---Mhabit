@@ -25,6 +25,11 @@ class MovieDetailActivity : AppCompatActivity() {
         binding = MovieDetailActivityBinding.inflate(layoutInflater)
         setContentView(R.layout.movie_detail_activity)
 
+        //return to home
+        findViewById<ImageButton>(R.id.back_to_all).setOnClickListener {
+            finish()
+        }
+
         //grab the movie that was selected from the recyclerview in main activity
         val bundle: Bundle? = intent.extras
         bundle?.apply {
@@ -37,21 +42,26 @@ class MovieDetailActivity : AppCompatActivity() {
             }
 
 
-            //set initial title in movie detail screen
+            //set initial title
             val titleText = findViewById<EditText>(R.id.title)
             titleText.setText(movieItem?.title)
 
-            //SET RATING HERE
-            //need to add it to xml first
-            val starBar = findViewById<RatingBar>(R.id.mhabitStarRating);
-            starBar.setOnRatingBarChangeListener { ratingBar, fl, b ->
+            //set initial rating
+            val starBar = findViewById<RatingBar>(R.id.mhabitStarRating)
+
+            starBar.rating = movieItem?.rating!!
+
+            //listener to update the rating
+            starBar.setOnRatingBarChangeListener { ratingBar, _, _ ->
                 when(ratingBar.rating.toInt()){
-                    1 -> starBar.rating = 1.0F;
-                    2 -> starBar.rating = 2.0F;
-                    3 -> starBar.rating = 3.0F;
-                    4 -> starBar.rating = 4.0F;
-                    5 -> starBar.rating = 5.0F;
+                    0 -> starBar.rating = 0F
+                    1 -> starBar.rating = 1F
+                    2 -> starBar.rating = 2F
+                    3 -> starBar.rating = 3F
+                    4 -> starBar.rating = 4F
+                    5 -> starBar.rating = 5F
                 }
+                ratingBar.rating = starBar.rating
             }
 
             //set initial description in movie detail screen
@@ -73,7 +83,8 @@ class MovieDetailActivity : AppCompatActivity() {
             }
 
             //set initial watchAgain value and create the dropdown box for user to choose
-            var watchagain : Boolean? = null
+            var watchagain = movieItem?.WatchAgain
+
             val optionList = arrayOf("Yes", "No").toMutableList()
 
             //initialize spinner
@@ -83,13 +94,27 @@ class MovieDetailActivity : AppCompatActivity() {
                 spinner.adapter = adapter
             }
 
+            //set selected option in spinner object to whatever the initial watchAgain value is
+            if (watchagain == true) {
+                spinner.setSelection(0)
+            }
+            if (watchagain == false) {
+                spinner.setSelection(1)
+            }
+
+            val a = 1
+            var b = 0
             spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                     //set watchagain according to the index of optionList since there are only two
-                    if (position == 0) {
-                        watchagain = true
-                    } else if (position == 1) {
-                        watchagain = false
+                    if (b < a) {
+                        b++
+                    } else {
+                        if (position == 0) {
+                            watchagain = true
+                        } else if (position == 1) {
+                            watchagain = false
+                        }
                     }
                 }
 
@@ -97,10 +122,7 @@ class MovieDetailActivity : AppCompatActivity() {
                     //don't need to put anything here for our purposes right now
                 }
             }
-            //return to home
-            findViewById<ImageButton>(R.id.back_to_all).setOnClickListener {
-                finish()
-            }
+
             //save edits when button is clicked
             findViewById<Button>(R.id.save).setOnClickListener {
 
@@ -108,18 +130,8 @@ class MovieDetailActivity : AppCompatActivity() {
                 val newTitle = titleText.text.toString()
                 movieItem?.title = newTitle
 
-                //UPDATING THE RATING HERE
-                //need to add it to xml first
-                val starBar = findViewById<RatingBar>(R.id.mhabitStarRating);
-                starBar.setOnRatingBarChangeListener { ratingBar, fl, b ->
-                    when(ratingBar.rating.toInt()){
-                        1 -> starBar.rating = 1.0F;
-                        2 -> starBar.rating = 2.0F;
-                        3 -> starBar.rating = 3.0F;
-                        4 -> starBar.rating = 4.0F;
-                        5 -> starBar.rating = 5.0F;
-                    }
-                    }
+                //update the rating
+                movieItem?.rating = starBar.rating
 
                 //update the description
                 val newDescription = descriptionText.text.toString()
@@ -137,7 +149,7 @@ class MovieDetailActivity : AppCompatActivity() {
                 val review = reviewText.text.toString()
                 movieItem?.review = review
 
-                //update watchagain value
+                //update the watchagain value
                 movieItem?.WatchAgain = watchagain
 
 
