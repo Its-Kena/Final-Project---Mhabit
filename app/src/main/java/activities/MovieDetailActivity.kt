@@ -1,5 +1,6 @@
 package activities
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -38,6 +39,30 @@ class MovieDetailActivity : AppCompatActivity() {
                 getSerializable("movie", Movie::class.java)
             } else {
                 getSerializable("movie") as Movie
+            }
+
+            //set genre image
+            val genreButton = findViewById<ImageButton>(R.id.genre_button)
+            var genreDrawable: Int? = null
+            when (movieItem?.genre) {
+                "Comedy" -> genreDrawable = R.drawable.mhabit_comedy
+                "Thriller" -> genreDrawable = R.drawable.mhabit_thriller
+                "Animated" -> genreDrawable = R.drawable.mhabit_anime
+                "Horror" -> genreDrawable = R.drawable.mhabit_horror
+                "Romance" -> genreDrawable = R.drawable.mhabit_romance
+                "Action" -> genreDrawable = R.drawable.mhabit_action
+                "Other" -> genreDrawable = R.drawable.mhabit_other
+                else -> {
+                    print("ERROR: genre is none of the above")
+                }
+            }
+            if (genreDrawable != null) {
+                genreButton.setImageResource(genreDrawable)
+            }
+
+            //listener to go to the genre screen for this movie's genre
+            genreButton.setOnClickListener {
+                movieItem?.genre?.let { it1 -> startGenreActivity(it1) }
             }
 
 
@@ -162,12 +187,17 @@ class MovieDetailActivity : AppCompatActivity() {
 
     //helper method that updates the specific movie object within the database
     private fun updateMovie() {
-            movieDb = MovieDatabase.getDatabase(this, GlobalScope)
-            GlobalScope.launch(Dispatchers.IO) {
-                movieDb.movieDao().update(movieItem) }
-            }
+        movieDb = MovieDatabase.getDatabase(this, GlobalScope)
+        GlobalScope.launch(Dispatchers.IO) {
+            movieDb.movieDao().update(movieItem) }
+    }
 
+    //method that opens the genre view screen
+    private fun startGenreActivity(genreChoice: String) {
+        val genreIntent = Intent(this, GenreActivity::class.java)
+        //sending the string genreChoice into the next activity so we can set attributes of screen for that specific genre
+        genreIntent.putExtra("genre", movieItem?.genre)
+        startActivity(genreIntent)
+    }
 
-        }
-
-
+}

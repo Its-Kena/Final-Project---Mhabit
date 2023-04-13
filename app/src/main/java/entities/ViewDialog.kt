@@ -25,7 +25,7 @@ class ViewDialog(context: Context) {
 
         //create list of genres for user to choose from
         val genreList =
-            arrayOf("Comedy", "Thriller", "Animated", "Horror", "Romance", "Action", "Other")
+            arrayOf("Choose a genre", "Comedy", "Thriller", "Animated", "Horror", "Romance", "Action", "Other")
                 .toMutableList()
 
         val dialog = Dialog(activity!!)
@@ -54,6 +54,10 @@ class ViewDialog(context: Context) {
                 } else {
                     //set genre to whatever item the user chose
                     genre = parent.getItemAtPosition(position).toString()
+
+                    if (genre == "Choose a genre") {
+                        genre = null
+                    }
                 }
             }
 
@@ -131,4 +135,3 @@ class ViewDialog(context: Context) {
         return editText.text.toString().trim().isEmpty()
     }
 }
-
