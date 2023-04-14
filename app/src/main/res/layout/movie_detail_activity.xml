@@ -1,105 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <LinearLayout
+    android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_margin="23dp">
-
-        <ImageButton
-            android:id="@+id/back_to_all"
-            android:layout_width="124dp"
-            android:layout_height="41dp"
-            android:backgroundTint="@color/white"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/back_button"
-            />
-
-        <EditText
-            android:id="@+id/title"
-            android:layout_width="161dp"
-            android:layout_height="wrap_content"
-            android:background="#00000000"
-            android:contentDescription="title"
-            android:textColorHint="@color/black" />
-        <RatingBar
-            android:id="@+id/mhabitStarRating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:numStars="5"
-            android:rating="0"
-            android:stepSize="1"
-            style="@style/Widget.AppCompat.RatingBar.Small"
-            android:isIndicator="false"/>
-
-        <EditText
-            android:id="@+id/descriptionbox"
-            android:layout_width="360dp"
-            android:layout_height="150dp"
-            android:contentDescription="movie description"
-            android:textColorHint="@color/black"/>
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/time_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:orientation="horizontal"
-            >
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="23dp">
 
-        <EditText
-            android:id="@+id/hours"
-            android:contentDescription="hours"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:textColorHint="@color/black"
+            <ImageButton
+                android:id="@+id/back_to_all"
+                android:layout_width="124dp"
+                android:layout_height="41dp"
+                android:backgroundTint="@color/white"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/back_button"
+                />
 
-            />
+            <LinearLayout
+                android:id="@+id/titlegenre_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/minutes"
-            android:contentDescription="minutes"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:textColorHint="@color/black"
-            />
+                <LinearLayout
+                    android:id="@+id/titlerating_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/title"
+                android:layout_width="161dp"
+                android:layout_height="wrap_content"
+                android:contentDescription="title"
+                android:textStyle="bold"
+                android:textSize="23dp"
+                android:textColorHint="@color/black" />
+
+                <RatingBar
+                    android:id="@+id/mhabitStarRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="16dp"
+                    android:numStars="5"
+                    android:rating="0"
+                    android:stepSize="1"
+                    style="@style/Widget.AppCompat.RatingBar.Small"
+                    android:isIndicator="false" />
+
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/genre_button"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_gravity="right"
+                android:backgroundTint="@color/white"
+                android:scaleType="fitCenter"
+                />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/description_label"
+                android:text="Description:"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/descriptionbox"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="top|left"
+                android:contentDescription="movie description"
+                android:textColorHint="@color/black"
+                android:textSize="16dp"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"/>
+
+            <TextView
+                android:id="@+id/runtime_label"
+                android:text="Runtime:"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:paddingTop="17dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:id="@+id/time_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <EditText
+                    android:id="@+id/hours"
+                    android:contentDescription="hours"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColorHint="@color/black"
+                    />
+
+                <TextView
+                    android:id="@+id/hours_text"
+                    android:text="hours"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"/>
+
+                <EditText
+                    android:id="@+id/minutes"
+                    android:contentDescription="minutes"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:textColorHint="@color/black"/>
+
+                <TextView
+                    android:id="@+id/mins_text"
+                    android:text="mins"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/watchagain_prompt"
+                android:text="Would you watch it again?"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:paddingTop="17dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Spinner
+                android:id="@+id/watchagain"
+                android:contentDescription="Watch again?"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown"/>
+
+            <TextView
+                android:id="@+id/review_prompt"
+                android:text="Review:"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:paddingTop="17dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/reviewbox"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:gravity="top"
+                android:hint="What did you think?"
+                android:textSize="16dp"
+                android:singleLine="false"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"/>
+
+            <Button
+                android:id="@+id/save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Save edits" />
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/watchagain_prompt"
-            android:text="Would you watch it again?"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <Spinner
-            android:id="@+id/watchagain"
-            android:contentDescription="Watch again?"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/btn_dropdown"
-            android:spinnerMode="dropdown"/>
-
-        <EditText
-            android:id="@+id/reviewbox"
-            android:layout_width="360dp"
-            android:layout_height="180dp"
-            android:layout_gravity="center"
-            android:gravity="top"
-            android:hint="What did you think?"
-            android:singleLine="true"/>
-
-        <Button
-            android:id="@+id/save"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Save edits" />
-
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -9,6 +9,7 @@ import android.graphics.drawable.ColorDrawable
 import android.view.View
 import android.view.Window
 import android.widget.*
+import androidx.core.content.ContentProviderCompat.requireContext
 import com.example.test.R
 import kotlinx.coroutines.*
 
@@ -24,7 +25,7 @@ class ViewDialog(context: Context) {
 
         //create list of genres for user to choose from
         val genreList =
-            arrayOf("Comedy", "Thriller", "Animated", "Horror", "Romance", "Action", "Other")
+            arrayOf("Choose a genre", "Comedy", "Thriller", "Animated", "Horror", "Romance", "Action", "Other")
                 .toMutableList()
 
         val dialog = Dialog(activity!!)
@@ -43,14 +44,25 @@ class ViewDialog(context: Context) {
             spinner.adapter = adapter
         }
 
+        //setting flags to account for spinner selecting first item on first launch
+        var a = 1
+        var b = 0
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                //set genre to whatever item the user chose
-                genre = parent.getItemAtPosition(position).toString()
+                if (b < a) {
+                    b++
+                } else {
+                    //set genre to whatever item the user chose
+                    genre = parent.getItemAtPosition(position).toString()
+
+                    if (genre == "Choose a genre") {
+                        genre = null
+                    }
+                }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                //don't need to put anything here for our purposes right now
+                //it isn't necessary to put something here
             }
         }
 
@@ -72,9 +84,27 @@ class ViewDialog(context: Context) {
             //disables adding a new movie if any of those fields are empty
             //BUT the button is no longer usable after this -- even if the user fills everything in
             //so this is a temporary measure
-            if (isEmpty(dialogTitle)|| isEmpty(dialogDescription) || isEmpty((dialogHours)) || isEmpty(dialogMinutes)) {
+            if (isEmpty(dialogTitle)|| isEmpty(dialogDescription) || isEmpty((dialogHours)) || isEmpty(dialogMinutes) || genre == null) {
                 doneButton.isEnabled = false
                 doneButton.isClickable = false
+                doneButton.isEnabled = true
+                doneButton.isClickable = true
+                if (isEmpty(dialogTitle)) {
+                    dialogTitle.error = "A title is required!"
+                }
+                if (isEmpty(dialogDescription)) {
+                    dialogDescription.error = "A description is required!"
+                }
+                if (isEmpty(dialogHours)) {
+                    dialogHours.error = "A time is required!"
+                }
+                if (isEmpty(dialogMinutes)) {
+                    dialogMinutes.error = "A time is required!"
+                }
+                if (genre == null) {
+                    Toast.makeText(dialog.context, "A genre is required!", Toast.LENGTH_SHORT).show();
+                }
+
             } else {
                 //a new movie object is created with the information the user entered
                 val movie = Movie(
@@ -105,4 +135,3 @@ class ViewDialog(context: Context) {
         return editText.text.toString().trim().isEmpty()
     }
 }
-
