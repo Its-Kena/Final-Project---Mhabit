@@ -18,7 +18,7 @@
         android:paddingTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.352"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/back_to_all"
         app:layout_constraintVertical_bias="0.0" />
@@ -27,11 +27,12 @@
         android:id="@+id/linearLayout"
         android:layout_width="259dp"
         android:layout_height="98dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="312dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/back_to_all">
+
 
         <TextView
             android:id="@+id/genre_title"
@@ -39,7 +40,6 @@
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"
             android:textSize="17dp" />
-
 
         <TextView
             android:id="@+id/genre_description"
@@ -51,8 +51,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mRecyclerView"
-        android:layout_width="408dp"
-        android:layout_height="536dp"
+        android:layout_width="729dp"
+        android:layout_height="557dp"
         android:layout_marginTop="24dp"
         android:fadeScrollbars="true"
         android:scrollbarStyle="insideInset"
@@ -73,10 +73,10 @@
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@+id/mRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.055"
+        app:layout_constraintHorizontal_bias="0.039"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.019"
+        app:layout_constraintVertical_bias="0.022"
         app:srcCompat="@drawable/back_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
